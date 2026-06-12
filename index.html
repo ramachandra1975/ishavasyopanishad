@@ -1974,5 +1974,955 @@
          </div>
       </div>
       <!-- .page-wrap --> 
+      <!--
+════════════════════════════════════════════════════════════════════════════════
+  ISAVASYOPANISHAD — TWO ADDITIONS
+  ─────────────────────────────────
+  ADDITION 1: Three-Chapter Mantra System  →  insert just before Section III
+  ADDITION 2: Hṛdaya-Pāṭha deep-dive section  →  insert just before </body>
+  
+  HOW TO USE:
+  1. Copy everything between "ADDITION 1 START" and "ADDITION 1 END"
+     and paste it BEFORE the line:
+       <!-- ═══ SECTION III: MANTRA 1 ═══ -->
+     (i.e., before <div class="chapter" id="m1">)
+
+  2. Copy everything between "ADDITION 2 START" and "ADDITION 2 END"
+     and paste it JUST BEFORE </body> at the bottom of your file.
+
+  3. Copy the CSS block and paste it into <style> just before the closing </style>
+
+  4. Copy the JS block and paste it just before </body> (after Addition 2).
+════════════════════════════════════════════════════════════════════════════════
+-->
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  EXTRA CSS — paste inside <style> before </style>                  ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<style id="additions-css">
+
+/* ─── THREE-CHAPTER TAB SYSTEM ─── */
+.mantras-chapter-wrap { padding: 5rem 0 0; }
+.mantras-chapter-wrap .ch-eyebrow { font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); font-family:'Noto Sans',sans-serif; margin-bottom:.75rem; }
+.mantras-chapter-wrap h1.ch-title { font-size:2.2rem; color:var(--text-primary); line-height:1.25; margin-bottom:.5rem; }
+.mantras-chapter-wrap .ch-dev { font-family:'Noto Serif Devanagari',serif; font-size:1.6rem; color:var(--gold); margin-bottom:1rem; line-height:1.5; }
+.mantras-chapter-wrap .ch-rule { width:60px; height:2px; background:var(--gold); margin:1.5rem 0 2rem; }
+
+.split-tab-bar { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:2rem; border-bottom:2px solid var(--border); padding-bottom:.75rem; }
+.split-tab { font-family:'Noto Sans',sans-serif; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; padding:.5rem 1.1rem; border-radius:6px 6px 0 0; cursor:pointer; border:1px solid var(--border); border-bottom:none; background:var(--panel); color:var(--text-muted); transition:all .2s; }
+.split-tab:hover { color:var(--gold); border-color:var(--gold); }
+.split-tab.active { background:var(--navy); color:var(--gold-light); border-color:var(--gold); }
+.split-tab-desc { font-size:.78rem; color:var(--text-muted); font-family:'Noto Sans',sans-serif; margin-bottom:2rem; font-style:italic; }
+
+.split-panel { display:none; }
+.split-panel.active { display:block; }
+
+.mantra-chapter-block { margin-bottom:3.5rem; border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+.mcb-header { background:linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); padding:1.5rem 2rem; display:flex; align-items:center; gap:1.5rem; }
+.mcb-num { width:48px; height:48px; min-width:48px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Cinzel',serif; font-size:.85rem; color:var(--navy); font-weight:600; }
+.mcb-title { font-family:'Cinzel',serif; font-size:1.15rem; color:var(--gold-light); margin-bottom:.2rem; }
+.mcb-range { font-family:'Noto Serif Devanagari',serif; font-size:1rem; color:var(--gold); }
+.mcb-subtitle { font-size:.8rem; color:rgba(232,216,176,.55); font-family:'Noto Sans',sans-serif; margin-top:.3rem; }
+.mcb-body { padding:1.75rem 2rem; background:var(--panel); }
+.mcb-body .mantra-block { margin:1.25rem 0; }
+.mcb-body .mantra-block:first-child { margin-top:0; }
+
+/* ─── DEEP DIVE — HṚDAYA-PĀṬHA ─── */
+.hridaya-section { background:linear-gradient(160deg, var(--navy) 0%, #1A1028 100%); padding:6rem 0 5rem; border-top:2px solid var(--border-strong); }
+.hridaya-banner { max-width:960px; margin:0 auto; padding:0 2rem 3rem; text-align:center; }
+.hridaya-banner-row { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-bottom:2rem; }
+.hridaya-badge { background:rgba(200,149,42,.12); border:1px solid rgba(200,149,42,.35); border-radius:10px; padding:.6rem 1.4rem; }
+.hridaya-badge-dev { font-family:'Noto Serif Devanagari',serif; font-size:1.3rem; color:var(--gold); line-height:1.4; }
+.hridaya-badge-rom { font-family:'Cinzel',serif; font-size:.72rem; letter-spacing:.12em; color:var(--gold-light); opacity:.7; }
+.hridaya-main-title { font-family:'Cinzel',serif; font-size:2rem; color:var(--gold-light); letter-spacing:.1em; margin-bottom:.75rem; }
+.hridaya-main-dev { font-family:'Noto Serif Devanagari',serif; font-size:2rem; color:var(--gold); margin-bottom:.5rem; }
+.hridaya-subtitle { font-size:1rem; color:rgba(232,216,176,.55); font-family:'Noto Sans',sans-serif; max-width:640px; margin:0 auto 1.5rem; line-height:1.75; }
+.hridaya-rule { width:80px; height:1px; background:var(--gold); margin:.5rem auto 0; opacity:.4; }
+.hridaya-grid { max-width:960px; margin:0 auto; padding:0 2rem; }
+.nava-intro { font-size:1.05rem; color:rgba(232,216,176,.7); line-height:1.95; margin-bottom:3rem; font-family:'Cormorant Garamond',serif; font-style:italic; border-left:3px solid rgba(200,149,42,.4); padding-left:1.5rem; }
+
+/* ─── NAVA ENTRY (each of the 9 mantras) ─── */
+.nava-entry { margin-bottom:5rem; border-top:1px solid rgba(200,149,42,.15); padding-top:3rem; }
+.nava-entry:first-child { border-top:none; padding-top:0; }
+.nava-num-row { display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem; }
+.nava-num-badge { width:44px; height:44px; min-width:44px; border-radius:50%; border:2px solid var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Cinzel',serif; font-size:.8rem; color:var(--gold); font-weight:600; }
+.nava-num-label { font-family:'Noto Sans',sans-serif; font-size:.68rem; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); }
+.nava-num-dev { font-family:'Noto Serif Devanagari',serif; font-size:1rem; color:var(--gold-light); }
+
+/* compact card */
+.nava-card { background:rgba(10,22,40,.7); border:1px solid rgba(200,149,42,.25); border-radius:14px; padding:1.75rem 2rem; margin-bottom:1.75rem; }
+.nava-card-dev { font-family:'Noto Serif Devanagari',serif; font-size:1.3rem; color:var(--gold-light); line-height:2; margin-bottom:.75rem; }
+.nava-card-iast { font-size:.9rem; color:rgba(232,216,176,.6); font-style:italic; margin-bottom:.75rem; line-height:1.7; }
+.nava-card-trans { font-size:1rem; color:rgba(232,216,176,.85); border-top:1px solid rgba(200,149,42,.2); padding-top:.75rem; margin-top:.5rem; line-height:1.75; }
+.nava-word-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:.75rem; margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid rgba(200,149,42,.15); }
+.nava-word-item { background:rgba(200,149,42,.06); border-radius:8px; padding:.75rem 1rem; }
+.nava-word-label { font-family:'Noto Sans',sans-serif; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:.3rem; }
+.nava-word-val { font-size:.85rem; color:rgba(232,216,176,.8); line-height:1.6; }
+.nava-word-dev { font-family:'Noto Serif Devanagari',serif; font-size:1.1rem; color:var(--gold); }
+
+/* five-lens accordion */
+.lens-accordion { margin-bottom:1.75rem; }
+.lens-accordion-title { font-family:'Cinzel',serif; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem; }
+.lens-tab-bar { display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:0; }
+.lens-tab { font-family:'Noto Sans',sans-serif; font-size:.68rem; letter-spacing:.07em; padding:.4rem .9rem; border-radius:6px; cursor:pointer; border:1px solid rgba(200,149,42,.25); background:transparent; color:rgba(232,216,176,.5); transition:all .2s; }
+.lens-tab:hover { color:var(--gold); border-color:rgba(200,149,42,.6); }
+.lens-tab.active { background:rgba(200,149,42,.15); color:var(--gold-light); border-color:var(--gold); }
+.lens-panels { border:1px solid rgba(200,149,42,.2); border-radius:0 8px 8px 8px; }
+.lens-panel { display:none; padding:1.5rem; }
+.lens-panel.active { display:block; }
+.lens-panel-head { font-family:'Cinzel',serif; font-size:.85rem; color:var(--gold); margin-bottom:.75rem; padding-bottom:.5rem; border-bottom:1px solid rgba(200,149,42,.2); }
+.lens-panel-body { font-size:.92rem; color:rgba(232,216,176,.82); line-height:1.9; }
+.lens-panel-body strong { color:var(--gold-light); font-weight:500; }
+.lens-panel-body em { color:rgba(232,216,176,.65); }
+
+/* immersive essay */
+.nava-essay { border-left:3px solid rgba(200,149,42,.35); padding-left:2rem; margin-top:1rem; }
+.nava-essay-eyebrow { font-family:'Noto Sans',sans-serif; font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem; }
+.nava-essay h4 { font-family:'Cinzel',serif; font-size:1rem; color:var(--gold-light); margin:1.5rem 0 .6rem; }
+.nava-essay p { font-size:.96rem; color:rgba(232,216,176,.82); line-height:2; margin-bottom:1.1rem; }
+.nava-essay p:last-child { margin-bottom:0; }
+.nava-essay .hl { color:var(--gold-light); font-weight:500; }
+.nava-essay .dev-inline { font-family:'Noto Serif Devanagari',serif; font-size:1.1rem; color:var(--gold); }
+
+/* responsive */
+@media(max-width:700px){
+  .mcb-header { padding:1rem 1.25rem; gap:1rem; }
+  .mcb-body { padding:1.25rem; }
+  .hridaya-main-title { font-size:1.4rem; }
+  .nava-card { padding:1.25rem; }
+  .lens-tab-bar { gap:.3rem; }
+  .nava-essay { padding-left:1rem; }
+}
+</style>
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  ADDITION 1 — paste BEFORE <div class="chapter" id="m1">           ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+
+<!-- THREE-CHAPTER MANTRA SYSTEM -->
+<div id="mantras" style="position:relative;top:-60px;height:0;overflow:hidden;"></div>
+<div class="page-wrap mantras-chapter-wrap">
+
+  <div class="ch-eyebrow">The Eighteen Mantras</div>
+  <h1 class="ch-title">Three Chapter Systems</h1>
+  <div class="ch-dev">अष्टादश-मन्त्राः — त्रिविध-विभाजन</div>
+  <div class="ch-rule"></div>
+  <p style="color:var(--text-secondary);line-height:1.9;margin-bottom:2rem;max-width:820px;">
+    The eighteen mantras of the Īśāvāsya have been grouped by commentators in three distinct ways — each revealing a different internal logic of the text. All three systems are presented below. Select the division that resonates with your current engagement with the Upaniṣad.
+  </p>
+
+  <!-- TAB BAR -->
+  <div class="split-tab-bar">
+    <div class="split-tab active" onclick="showSplit('shankar',this)">Śaṅkara's Divisions</div>
+    <div class="split-tab" onclick="showSplit('thirds',this)">Equal Thirds</div>
+    <div class="split-tab" onclick="showSplit('thematic',this)">Thematic Arc</div>
+  </div>
+
+  <!-- ── PANEL 1: Śaṅkara's Divisions 1-8 / 9-14 / 15-18 ── -->
+  <div id="split-shankar" class="split-panel active">
+    <p class="split-tab-desc">Ādi Śaṅkarācārya's commentarial structure: Jñāna-Kāṇḍa (Knowledge) · Karma-Jñāna synthesis · Maraṇa-Vidyā (Death Practice)</p>
+
+    <!-- Chapter I -->
+    <div class="mantra-chapter-block">
+      <div class="mcb-header">
+        <div class="mcb-num">I</div>
+        <div>
+          <div class="mcb-title">Jñāna-Kāṇḍa — The Knowledge Section</div>
+          <div class="mcb-range">मन्त्र १–८ &nbsp;·&nbsp; Mantras 1–8</div>
+          <div class="mcb-subtitle">Pure non-dual metaphysics — addressed to the jñāna-niṣṭha, the seeker already established in discrimination</div>
+        </div>
+      </div>
+      <div class="mcb-body">
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRA 1</div>
+          <div class="mantra-dev">ईशा वास्यम् इदं सर्वम् यत्किञ्च जगत्यां जगत् ।<br>तेन त्यक्तेन भुञ्जीथाः मा गृधः कस्य स्विद् धनम् ।।</div>
+          <div class="mantra-roman">Īśā vāsyam idaṃ sarvam yatkiñca jagatyāṃ jagat | tena tyaktena bhuñjīthāḥ mā gṛdhaḥ kasya svid dhanam ||</div>
+          <div class="mantra-trans">All this — whatsoever moves in this moving world — is to be enveloped by the Lord. Through that renounced (portion), enjoy. Do not covet anyone's wealth.</div>
+        </div>
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRA 2</div>
+          <div class="mantra-dev">कुर्वन् एव इह कर्माणि जिजीविषेच्छतँ समाः ।<br>एवं त्वयि न अन्यथा इतः अस्ति न कर्म लिप्यते नरे ।।</div>
+          <div class="mantra-roman">Kurvan eva iha karmāṇi jijīviṣet śataṃ samāḥ | evaṃ tvayi nānyatheto'sti na karma lipyate nare ||</div>
+          <div class="mantra-trans">Performing actions here, one should wish to live a hundred years. Thus for you there is no other way — action does not cling to a person who lives thus.</div>
+        </div>
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRA 3</div>
+          <div class="mantra-dev">असुर्या नाम ते लोका अन्धेन तमसा आवृताः ।<br>ताँस्ते प्रेत्य अभिगच्छन्ति ये के च आत्म हनः जनाः ।।</div>
+          <div class="mantra-roman">Asūryā nāma te lokā andhena tamasā āvṛtāḥ | tāṃste pretya abhigacchanti ye ke ca ātmahanaḥ janāḥ ||</div>
+          <div class="mantra-trans">Those worlds of the asuras, covered in blinding darkness — to them go, after death, those who are slayers of the Self.</div>
+        </div>
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRA 4</div>
+          <div class="mantra-dev">अनेजत् एकम् मनसो जवीयो न एनत् देवा आप्नुवन् पूर्वम् अर्षत् ।<br>तत् धावतो अन्यान् अत्येति तिष्ठत् तस्मिन् अपः मातरिश्वा दधाति ।।</div>
+          <div class="mantra-roman">Anejat ekam manaso javīyo na enat devā āpnuvan pūrvam arṣat | tat dhāvato anyān atyeti tiṣṭhat tasmin apaḥ mātariśvā dadhāti ||</div>
+          <div class="mantra-trans">Unmoving, One, faster than the mind — the gods could not reach it, for it moved ahead. Standing still, it surpasses those who run. By its presence, Mātariśvan apportions activities.</div>
+        </div>
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRA 5</div>
+          <div class="mantra-dev">तत् एजति तत् न एजति तत् दूरे तद् उ अन्तिके ।<br>तद् अन्तः अस्य सर्वस्य तद् उ सर्वस्य अस्य बाह्यतः ।।</div>
+          <div class="mantra-roman">Tat ejati tat na ejati tat dūre tad u antike | tad antaḥ asya sarvasya tad u sarvasya asya bāhyataḥ ||</div>
+          <div class="mantra-trans">It moves; it moves not. It is far; it is near. It is within all this; it is without all this.</div>
+        </div>
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRA 6</div>
+          <div class="mantra-dev">यः तु सर्वाणि भूतानि आत्मनि एव अनुपश्यति ।<br>सर्वभूतेषु च आत्मानं ततो न विजुगुप्सते ।।</div>
+          <div class="mantra-roman">Yaḥ tu sarvāṇi bhūtāni ātmani eva anupaśyati | sarvabhūteṣu ca ātmānaṃ tato na vijugupsate ||</div>
+          <div class="mantra-trans">He who sees all beings in the Self alone, and the Self in all beings — he does not shrink from anything on account of that perception.</div>
+        </div>
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRA 7</div>
+          <div class="mantra-dev">यस्मिन् सर्वाणि भूतानि आत्मा एव अभूत् विजानतः ।<br>तत्र को मोहः कः शोक एकत्वम् अनुपश्यतः ।।</div>
+          <div class="mantra-roman">Yasmin sarvāṇi bhūtāni ātmā eva abhūt vijānataḥ | tatra ko mohaḥ kaḥ śoka ekatvam anupaśyataḥ ||</div>
+          <div class="mantra-trans">When to the knower all beings have become the Self itself — what delusion, what grief can there be, for one who perceives this oneness?</div>
+        </div>
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRA 8</div>
+          <div class="mantra-dev">स पर्यगात् शुक्रम् अकायम् अव्रणम् अस्नाविरम् शुद्धम् अपापविद्धम् ।<br>कविः मनीषी परिभूः स्वयम्भूः याथातथ्यतोऽर्थान् व्यदधात् शाश्वतीभ्यः समाभ्यः ।।</div>
+          <div class="mantra-roman">Sa paryagāt śukram akāyam avraṇam asnāviram śuddham apāpaviddham | kaviḥ manīṣī paribhūḥ svayambhūḥ yāthātathyato'rthān vyadadhāt śāśvatībhyaḥ samābhyaḥ ||</div>
+          <div class="mantra-trans">That Self is all-pervading, radiant, bodiless, unwounded, without sinews, pure, untouched by evil — the omniscient seer, the mind-ruler, transcendent, self-existent — it has apportioned all things in proper order from eternal years.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter II -->
+    <div class="mantra-chapter-block">
+      <div class="mcb-header">
+        <div class="mcb-num">II</div>
+        <div>
+          <div class="mcb-title">Karma-Jñāna Samuccaya — The Integration</div>
+          <div class="mcb-range">मन्त्र ९–१४ &nbsp;·&nbsp; Mantras 9–14</div>
+          <div class="mcb-subtitle">The Vidyā-Avidyā dialectic — addressed to the karma-yoga sādhaka seeking synthesis of action and knowledge</div>
+        </div>
+      </div>
+      <div class="mcb-body">
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRAS 9–10</div>
+          <div class="mantra-dev">अन्धं तमः प्रविशन्ति ये अविद्याम् उपासते ।<br>ततो भूय इव ते तमो य उ विद्यायाँ रताः ।।<br><br>अन्यत् एव आहुः विद्यया अन्यत् आहुः अविद्यया ।<br>इति शुश्रुम धीराणां ये नः तत् विचचक्षिरे ।।</div>
+          <div class="mantra-roman">Andhaṃ tamaḥ praviśanti ye avidyām upāsate | tato bhūya iva te tamo ya u vidyāyāṃ ratāḥ || anyat evāhuḥ vidyayā anyat āhuḥ avidyayā | iti śuśruma dhīrāṇāṃ ye naḥ tat vicacakṣire ||</div>
+          <div class="mantra-trans">Into blind darkness enter those who worship avidyā. Into greater darkness still go those devoted to vidyā alone. Different is the fruit said to come from vidyā; different from avidyā. Thus have we heard from the wise.</div>
+        </div>
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRA 11</div>
+          <div class="mantra-dev">विद्यां च अविद्यां च यः तत् वेद उभयम् सह ।<br>अविद्यया मृत्युं तीर्त्वा विद्यया अमृतम् अश्नुते ।।</div>
+          <div class="mantra-roman">Vidyāṃ ca avidyāṃ ca yaḥ tat veda ubhayam saha | avidyayā mṛtyuṃ tīrtvā vidyayā amṛtam aśnute ||</div>
+          <div class="mantra-trans">He who knows both vidyā and avidyā together — crossing over death through avidyā, he attains immortality through vidyā.</div>
+        </div>
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRAS 12–14</div>
+          <div class="mantra-dev">अन्धं तमः प्रविशन्ति ये असम्भूतिम् उपासते ।<br>ततो भूय इव ते तमो य उ सम्भूत्यां रताः ।।<br><br>अन्यत् एव आहुः सम्भवात् अन्यत् आहुः असम्भवात् ।<br>इति शुश्रुम धीराणां ये नः तत् विचचक्षिरे ।।<br><br>सम्भूतिं च विनाशं च यः तत् वेद उभयम् सह ।<br>विनाशेन मृत्युं तीर्त्वा सम्भूत्या अमृतम् अश्नुते ।।</div>
+          <div class="mantra-roman">Andhaṃ tamaḥ praviśanti ye asambhūtim upāsate | ... sambhūtiṃ ca vināśaṃ ca yaḥ tat veda ubhayam saha | vināśena mṛtyuṃ tīrtvā sambhūtyā amṛtam aśnute ||</div>
+          <div class="mantra-trans">Those who worship the unmanifest alone enter blind darkness; those devoted only to the manifest enter greater darkness still. He who knows both the manifest and dissolution together — crossing death through dissolution, he attains immortality through the manifest.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter III -->
+    <div class="mantra-chapter-block">
+      <div class="mcb-header">
+        <div class="mcb-num">III</div>
+        <div>
+          <div class="mcb-title">Maraṇa-Vidyā — The Science of Dying</div>
+          <div class="mcb-range">मन्त्र १५–१८ &nbsp;·&nbsp; Mantras 15–18</div>
+          <div class="mcb-subtitle">Direct address to the Sun at the moment of death — the Upaniṣad's closing protocol of dissolution and re-absorption</div>
+        </div>
+      </div>
+      <div class="mcb-body">
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRA 15</div>
+          <div class="mantra-dev">हिरण्मयेन पात्रेण सत्यस्य अपिहितं मुखम् ।<br>तत् त्वं पूषन् अपावृणु सत्यधर्माय दृष्टये ।।</div>
+          <div class="mantra-roman">Hiraṇmayena pātreṇa satyasya apihitaṃ mukham | tat tvaṃ pūṣan apāvṛṇu satyadharmāya dṛṣṭaye ||</div>
+          <div class="mantra-trans">The face of Truth is covered by a golden vessel. O Pūṣan, uncover it — that I, whose dharma is truth, may behold it.</div>
+        </div>
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRA 16</div>
+          <div class="mantra-dev">पूषन् एकर्षे यम सूर्य प्राजापत्य व्यूह रश्मीन् समूह ।<br>तेजो यत् ते रूपं कल्याणतमं तत् ते पश्यामि यः असावसौ पुरुषः सः अहम् अस्मि ।।</div>
+          <div class="mantra-roman">Pūṣan ekarṣe yama sūrya prājāpatya vyūha raśmīn samūha | tejo yat te rūpaṃ kalyāṇatamaṃ tat te paśyāmi yaḥ asāv asau puruṣaḥ saḥ aham asmi ||</div>
+          <div class="mantra-trans">O Pūṣan, sole traveler, Yama, Sun, son of Prajāpati — spread your rays, gather them. That most auspicious form of yours I shall behold. That Puruṣa yonder — I am That.</div>
+        </div>
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRA 17</div>
+          <div class="mantra-dev">वायुः अनिलम् अमृतम् अथ इदम् भस्मान्तम् शरीरम् ।<br>ॐ क्रतो स्मर कृतम् स्मर क्रतो स्मर कृतम् स्मर ।।</div>
+          <div class="mantra-roman">Vāyur anilam amṛtam atha idaṃ bhasmāntam śarīram | OM krato smara kṛtam smara krato smara kṛtam smara ||</div>
+          <div class="mantra-trans">The breath shall merge with the immortal air; then this body shall be reduced to ash. OM — O will, remember; remember what was done. O will, remember; remember what was done.</div>
+        </div>
+        <div class="mantra-block">
+          <div class="mantra-num">MANTRA 18</div>
+          <div class="mantra-dev">अग्ने नय सुपथा राये अस्मान् विश्वानि देव वयुनानि विद्वान् ।<br>युयोधि अस्मत् जुहुराणम् एनः भूयिष्ठां ते नम-उक्तिम् विधेम ।।</div>
+          <div class="mantra-roman">Agne naya supathā rāye asmān viśvāni deva vayunāni vidvān | yuyodhi asmat juhuṟāṇam enaḥ bhūyiṣṭhāṃ te nama-uktim vidhema ||</div>
+          <div class="mantra-trans">O Agni, lead us by the good path to prosperity. O god who knows all our works — remove from us the deviating sin. We shall offer you our most abundant word of salutation.</div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /split-shankar -->
+
+
+  <!-- ── PANEL 2: Equal Thirds 1-6 / 7-12 / 13-18 ── -->
+  <div id="split-thirds" class="split-panel">
+    <p class="split-tab-desc">Equal thirds of six mantras — three balanced movements: Pervasion · Self-Recognition · Solar Return</p>
+
+    <div class="mantra-chapter-block">
+      <div class="mcb-header">
+        <div class="mcb-num">I</div>
+        <div>
+          <div class="mcb-title">Vyāpti — Pervasion</div>
+          <div class="mcb-range">मन्त्र १–६ &nbsp;·&nbsp; Mantras 1–6</div>
+          <div class="mcb-subtitle">The world as Brahman's pervasion; the paradoxes of the Absolute; first glimpse of universal Self-vision</div>
+        </div>
+      </div>
+      <div class="mcb-body">
+        <p style="color:var(--text-muted);font-size:.88rem;line-height:1.8;margin-bottom:1rem;font-style:italic;">Mantras 1–6: From the foundational decree of pervasion (Mantra 1) through the karma teaching (2), the warning of self-neglect (3), the paradox of the unmoving-yet-fastest (4), the six cosmological contradictions (5), to the first instruction in universal Self-vision (6). This sixfold movement establishes the metaphysical ground.</p>
+        <p style="color:var(--text-secondary);font-size:.9rem;line-height:1.85;">See Mantras 1–6 in full above. Each mantra of this first third lays one course of the philosophical foundation: (1) ontological pervasion, (2) ethical action-without-ownership, (3) the consequence of self-neglect, (4) the nature of awareness itself as prior to mind, (5) the six paradoxes that dissolve all conceptual categories, and (6) the perceptual practice of seeing the Self everywhere. Without this first third, the remaining twelve mantras would have no ground to stand on.</p>
+      </div>
+    </div>
+
+    <div class="mantra-chapter-block">
+      <div class="mcb-header">
+        <div class="mcb-num">II</div>
+        <div>
+          <div class="mcb-title">Ekatva-Darśana — Vision of Oneness</div>
+          <div class="mcb-range">मन्त्र ७–१२ &nbsp;·&nbsp; Mantras 7–12</div>
+          <div class="mcb-subtitle">Universal Self-recognition, the eight attributes of the Absolute, the paradox of knowledge and ignorance, the synthesis</div>
+        </div>
+      </div>
+      <div class="mcb-body">
+        <p style="color:var(--text-muted);font-size:.88rem;line-height:1.8;margin-bottom:1rem;font-style:italic;">Mantras 7–12: From the liberation from moha and śoka through ekatvam (7), through the eight negative attributes of Brahman (8), the Vidyā-Avidyā paradox (9–10), to the crucial synthetic declaration that both must be known together (11). This six-mantra arc is the intellectual heart of the Upaniṣad.</p>
+        <p style="color:var(--text-secondary);font-size:.9rem;line-height:1.85;">This second third completes the philosophical arc. Mantra 7 delivers the promise of liberation from all suffering through ekatvam. Mantra 8 defines the liberated Ātman through eight negative attributes and four positive ones. Mantras 9–10 pose the most difficult puzzle in the text — knowledge leads to greater darkness than ignorance? — and Mantra 11 resolves it: both must be held simultaneously. Mantra 12 mirrors the structure of 11 at the cosmic level of sambhūti (manifestation) and vināśa (dissolution). This is philosophy at full stretch.</p>
+      </div>
+    </div>
+
+    <div class="mantra-chapter-block">
+      <div class="mcb-header">
+        <div class="mcb-num">III</div>
+        <div>
+          <div class="mcb-title">Sūrya-Ārohaṇa — The Solar Ascent</div>
+          <div class="mcb-range">मन्त्र १३–१८ &nbsp;·&nbsp; Mantras 13–18</div>
+          <div class="mcb-subtitle">The cosmic doctrine of manifestation, the golden-vessel prayer, the Soham Mahāvākya, the death protocol, and the fire prayer</div>
+        </div>
+      </div>
+      <div class="mcb-body">
+        <p style="color:var(--text-muted);font-size:.88rem;line-height:1.8;margin-bottom:1rem;font-style:italic;">Mantras 13–18: The final six mantras trace the full arc of solar-dissolution practice. Mantras 13–14 mirror 9–12 at the level of sambhūti (the manifest). Mantra 15 is the transition — the golden vessel covers the face of truth; prayer is needed. Mantra 16 delivers the Mahāvākya. Mantra 17 is the death-science. Mantra 18 closes with prostration to fire.</p>
+        <p style="color:var(--text-secondary);font-size:.9rem;line-height:1.85;">The final third carries the Upaniṣad from philosophy into living practice and dying preparation. The śifte in grammatical person — from third-person description to direct second-person address of the Sun — at Mantra 15 marks the boundary between understanding and sādhana. Once the seeker has understood what Brahman is, what the Ātman is, and how the two relate, there is nothing left but practice: uncover the face, declare identity, remember at dissolution, and surrender all action to fire. Philosophy ends in prostration.</p>
+      </div>
+    </div>
+  </div><!-- /split-thirds -->
+
+
+  <!-- ── PANEL 3: Thematic Arc 1-5 / 6-11 / 12-18 ── -->
+  <div id="split-thematic" class="split-panel">
+    <p class="split-tab-desc">Thematic grouping by philosophical movement: The Absolute · The Relational Self · The Practice of Return</p>
+
+    <div class="mantra-chapter-block">
+      <div class="mcb-header">
+        <div class="mcb-num">I</div>
+        <div>
+          <div class="mcb-title">Brahma-Prakaraṇa — The Nature of the Absolute</div>
+          <div class="mcb-range">मन्त्र १–५ &nbsp;·&nbsp; Mantras 1–5</div>
+          <div class="mcb-subtitle">Everything is Brahman's pervasion; action within pervasion; the consequence of forgetting; the speed and paradox of pure awareness</div>
+        </div>
+      </div>
+      <div class="mcb-body">
+        <p style="color:var(--text-secondary);font-size:.9rem;line-height:1.85;">These five mantras constitute a complete philosophical treatise on the nature of the Absolute. Mantra 1: Brahman pervades everything — this is the foundational ontological claim. Mantra 2: action performed within this understanding leaves no residue — this is the ethical corollary. Mantra 3: forgetting this pervasion is self-destruction — this is the psychological warning. Mantra 4: the Absolute is unmoving yet faster than mind — this is the epistemological paradox that dissolves the seeking mind. Mantra 5: the six contradictions that make the mind's categories collapse entirely. These five mantras alone constitute a complete Upaniṣad.</p>
+      </div>
+    </div>
+
+    <div class="mantra-chapter-block">
+      <div class="mcb-header">
+        <div class="mcb-num">II</div>
+        <div>
+          <div class="mcb-title">Ātma-Prakaraṇa — The Relational Self</div>
+          <div class="mcb-range">मन्त्र ६–११ &nbsp;·&nbsp; Mantras 6–11</div>
+          <div class="mcb-subtitle">Universal Self-vision; freedom from grief; the eight attributes; the Vidyā-Avidyā synthesis — the Self in relation to all beings and all paths</div>
+        </div>
+      </div>
+      <div class="mcb-body">
+        <p style="color:var(--text-secondary);font-size:.9rem;line-height:1.85;">Mantras 6–11 shift from the abstract Absolute to the Ātman in relationship — with other beings, with one's own nature, and with the dual paths of knowledge and action. Mantra 6: seeing the Self in all dissolves revulsion. Mantra 7: seeing all as Self dissolves delusion and grief. Mantra 8: the Ātman defined by eight negations and four affirmations. Mantras 9–10: the shocking paradox that both ignorance-path and knowledge-path alone lead to darkness. Mantra 11: the resolution — both together. This middle section is where the Upaniṣad is most psychologically demanding: it refuses easy categorization of paths and insists on the integrative capacity that holds opposites simultaneously.</p>
+      </div>
+    </div>
+
+    <div class="mantra-chapter-block">
+      <div class="mcb-header">
+        <div class="mcb-num">III</div>
+        <div>
+          <div class="mcb-title">Sādhana-Prakaraṇa — The Practice of Return</div>
+          <div class="mcb-range">मन्त्र १२–१८ &nbsp;·&nbsp; Mantras 12–18</div>
+          <div class="mcb-subtitle">Cosmic manifestation and dissolution; the golden vessel prayer; the Soham identity; the death-science; the fire prayer — the full sādhana arc</div>
+        </div>
+      </div>
+      <div class="mcb-body">
+        <p style="color:var(--text-secondary);font-size:.9rem;line-height:1.85;">The final seven mantras of this thematic grouping are the most sādhana-rich passage in the Upaniṣad. Mantras 12–14 complete the Vidyā-Avidyā / Sambhūti-Vināśa structure. Then the Upaniṣad breaks entirely from its philosophical mode: the seeker begins speaking directly to the Sun (Mantra 15's golden vessel prayer), declares identity with the solar Puruṣa (Mantra 16's Soham), receives instructions for the dying moment (Mantra 17's krato smara), and closes with the bow to fire (Mantra 18). The final third of this thematic arc is not philosophy about the Self — it is direct engagement with it, as both the destination of practice and the ground from which practice arises.</p>
+      </div>
+    </div>
+  </div><!-- /split-thematic -->
+
+</div><!-- /.page-wrap.mantras-chapter-wrap -->
+<!-- END ADDITION 1 -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  ADDITION 2 — paste just before </body>                            ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+
+<!-- HṚDAYA-PĀṬHA — THE NINE ESSENTIAL MANTRAS -->
+<div id="hridaya" class="hridaya-section">
+
+  <!-- four naming banners -->
+  <div class="hridaya-banner">
+    <div class="hridaya-banner-row">
+      <div class="hridaya-badge"><div class="hridaya-badge-dev">नव सूत्र</div><div class="hridaya-badge-rom">Nava Sūtra</div></div>
+      <div class="hridaya-badge"><div class="hridaya-badge-dev">महा-विवरण</div><div class="hridaya-badge-rom">Mahā-Vivaraṇa</div></div>
+      <div class="hridaya-badge"><div class="hridaya-badge-dev">हृदय-पाठ</div><div class="hridaya-badge-rom">Hṛdaya-Pāṭha</div></div>
+      <div class="hridaya-badge"><div class="hridaya-badge-dev">सार-संग्रह</div><div class="hridaya-badge-rom">Sāra-Saṅgraha</div></div>
+    </div>
+    <div class="hridaya-main-dev">नव-मन्त्र-विवरणम्</div>
+    <div class="hridaya-main-title">THE NINE ESSENTIAL MANTRAS</div>
+    <div class="hridaya-subtitle">Nine mantras chosen as the complete distillation of the Upaniṣad's teaching — each one an entire philosophy compressed into a single breath, each carrying the full weight of the remaining seventeen</div>
+    <div class="hridaya-rule"></div>
+  </div>
+
+  <div class="hridaya-grid">
+    <p class="nava-intro">
+      Of the eighteen mantras of the Īśāvāsyopaniṣad, nine have been selected here as the irreducible heart — not because the others are lesser, but because these nine, held together, contain the full arc of the Upaniṣad's teaching: the metaphysical foundation (Mantras 1, 4, 5), the relational-ethical dimension (Mantras 2, 6–7), the negative theology (Mantra 8), the integrative synthesis (Mantra 11), the devotional-solar prayer (Mantra 15), the Mahāvākya (Mantra 16), and the death-science (Mantra 17). A practitioner who meditates deeply on these nine carries the entire Upaniṣad in their body.
+    </p>
+
+    <!-- ══════════════════════ NAVA 1 — MANTRA 1 ══════════════════════ -->
+    <div class="nava-entry">
+      <div class="nava-num-row">
+        <div class="nava-num-badge">I</div>
+        <div>
+          <div class="nava-num-label">Nava Sūtra · First Essential Mantra</div>
+          <div class="nava-num-dev">प्रथमो मन्त्रः — ईशावास्यम्</div>
+        </div>
+      </div>
+
+      <!-- compact card -->
+      <div class="nava-card">
+        <div class="nava-card-dev">ईशा वास्यम् इदं सर्वम् यत्किञ्च जगत्यां जगत् ।<br>तेन त्यक्तेन भुञ्जीथाः मा गृधः कस्य स्विद् धनम् ।।</div>
+        <div class="nava-card-iast">Īśā vāsyam idaṃ sarvam yatkiñca jagatyāṃ jagat | tena tyaktena bhuñjīthāḥ mā gṛdhaḥ kasya svid dhanam ||</div>
+        <div class="nava-card-trans">All this — whatsoever moves in this moving world — is to be enveloped by the Lord. Through that renounced portion, enjoy. Do not covet anyone's wealth.</div>
+        <div class="nava-word-grid">
+          <div class="nava-word-item"><div class="nava-word-label">Īśā</div><div class="nava-word-val"><span class="nava-word-dev">ईशा</span> — Instrumental of √īś: "by/through the Ruler-Permeader." Not a name but a participial function: pervading-owning consciousness.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Vāsyam</div><div class="nava-word-val"><span class="nava-word-dev">वास्यम्</span> — Gerundive (kṛtya) of √vas + ā-prefix: "ought thoroughly to be dwelt-in / pervaded." Obligation, not description.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Tyaktena</div><div class="nava-word-val"><span class="nava-word-dev">त्यक्तेन</span> — Instrumental past passive of √tyaj: "through having-been-renounced." The renunciation is of the possessive sense, not of the world.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Sandhi</div><div class="nava-word-val">Īśā + āvāsyam → Īśāvāsyam: two ā-sounds merging (savarna-dīrgha). The permeator and pervaded become one long vowel — the teaching in the grammar.</div></div>
+        </div>
+      </div>
+
+      <!-- five lenses -->
+      <div class="lens-accordion">
+        <div class="lens-accordion-title">Five Analytical Lenses</div>
+        <div class="lens-tab-bar" id="lens-tabs-1">
+          <div class="lens-tab active" onclick="showLens(1,'vedic',this)">Vedic · Āgamic</div>
+          <div class="lens-tab" onclick="showLens(1,'phil',this)">Philosophical</div>
+          <div class="lens-tab" onclick="showLens(1,'sci',this)">Scientific</div>
+          <div class="lens-tab" onclick="showLens(1,'neuro',this)">Neuropsychological</div>
+          <div class="lens-tab" onclick="showLens(1,'tantric',this)">Tantric · Kuṇḍalinī</div>
+        </div>
+        <div class="lens-panels">
+          <div class="lens-panel active" id="lens-1-vedic">
+            <div class="lens-panel-head">Vedic · Āgamic Perspective</div>
+            <div class="lens-panel-body">Within the Vedic sacrificial cosmos, the declaration <strong>īśāvāsyam idaṃ sarvam</strong> is a radical reorientation of the entire yajña (sacrifice) culture. The Yajurveda had been building, across thirty-nine adhyāyas, an elaborate system in which the sacrificer temporarily becomes the cosmic Puruṣa through ritual action. Mantra 1 — the fortieth adhyāya's opening verse — announces: the ritual result you spent thirty-nine chapters seeking through action is already accomplished. The world is already pervaded by Īśā. The sacrifice has always already happened. In Āgamic terms, this mantra corresponds to the Śivadṛṣṭi — the vision of the world as Śiva's own self-luminous presence. The Pratyabhijñā school of Kashmir Śaivism locates this as the natural state (<em>sahaja</em>) that sādhana merely makes visible. The gerundive <em>vāsyam</em> in the Āgamic reading is not a moral instruction but a description of the practitioner's unfolding recognition: the pervasion is already complete; what remains is only its acknowledgment.</div>
+          </div>
+          <div class="lens-panel" id="lens-1-phil">
+            <div class="lens-panel-head">Philosophical Perspective</div>
+            <div class="lens-panel-body">Mantra 1 compresses three complete philosophical claims into two words. <strong>Ontologically:</strong> Brahman pervades all existence — not as a deity who dwells in things but as the pervasive medium in which things appear. This is not panentheism (God contains the world) nor pantheism (God is identical to the world) but the Advaitic position: Brahman is the ground that makes the world's appearance possible while remaining unaffected by it. <strong>Epistemologically:</strong> The gerundive <em>vāsyam</em> (ought to be seen as pervaded) places the teaching in the realm of right perception — the world is not to be logically argued into Brahman-ness but <em>seen</em> as pervaded. This is Śaṅkara's key insight: Advaita is not a philosophical conclusion but a perceptual re-orientation. <strong>Ethically:</strong> <em>tena tyaktena bhuñjīthāḥ</em> (enjoy through renunciation) is not a moral command but the natural consequence of the ontological insight: once you see the world as Brahman, enjoyment is no longer extraction from a foreign other but participation in one's own nature. Coveting (<em>mā gṛdhaḥ</em>) becomes structurally impossible when there is no "other" from whom to covet.</div>
+          </div>
+          <div class="lens-panel" id="lens-1-sci">
+            <div class="lens-panel-head">Scientific Perspective</div>
+            <div class="lens-panel-body">The metaphysics of pervasion finds a structural parallel in contemporary field theories. In quantum field theory, particles are not fundamental; fields are. What appears as discrete particles (jagat — the moving world) are excitations of underlying fields that pervade all of spacetime. The field does not move with the particle — it pervades the space in which the particle moves. This is structurally identical to <em>īśāvāsyam</em>: the permeating presence (Īśā/the field) pervades the moving world (jagat) without being constituted by it. Furthermore, the figura etymologica <em>jagatyāṃ jagat</em> (the moving within the moving) encodes a fractal or recursive structure — motion nested within motion — which mirrors modern cosmological descriptions of nested scales of structure (quantum fluctuations within fields within spacetime within multiverse). The ecological corollary of <em>mā gṛdhaḥ kasya svid dhanam</em> (do not covet anyone's wealth) anticipates the commons theory: when resources are understood as belonging to the whole system (the field/Brahman), extraction-based thinking produces systemic collapse. The mantra is simultaneously a physics statement and an ecological ethics.</div>
+          </div>
+          <div class="lens-panel" id="lens-1-neuro">
+            <div class="lens-panel-head">Neuropsychological Perspective</div>
+            <div class="lens-panel-body">The Default Mode Network (DMN) — the brain's self-referential processing circuit — is the neural substrate of the sense of personal ownership that the mantra targets with <em>mā gṛdhaḥ</em> (do not covet). The DMN is most active during mind-wandering, self-narrative, and rumination — precisely the states that generate the experience of a "self" separate from the world, which then covets the world's objects. Neuroimaging studies on non-dual awareness states consistently show DMN deactivation: the self-referential loop quiets, and what remains is open field-awareness — neurologically corresponding to what the mantra describes as īśāvāsya-perception. The practice instruction embedded in <em>vāsyam</em> (ought to be perceived as pervaded) is a DMN-recalibration directive: instead of world-as-object-for-acquisition, train perception toward world-as-field-of-awareness. Over sustained practice, this perceptual retraining measurably reduces the activation of the DMN's posterior cingulate cortex — the "ownership attribution" hub. The mantra is neuroplasticity instruction encoded in ten syllables.</div>
+          </div>
+          <div class="lens-panel" id="lens-1-tantric">
+            <div class="lens-panel-head">Tantric · Kuṇḍalinī Perspective</div>
+            <div class="lens-panel-body">In the Śrīvidyā tradition, the opening <em>ī</em>-kāra of <em>Īśā</em> is the vowel of Śakti herself — the bīja that vibrates in the ājñā-cakra (third eye center) and activates the frontal sinuses at approximately 2000–2300 Hz. The Lalitā Sahasranāma records <em>Īśānā sarvavidyānāṃ</em> (Nāma 723) — "the Ruler of all knowledge" — as a direct parallel to this mantra's opening. The compound <em>Īśāvāsya</em> in Tantric phonology is thus a sandhi not merely of two Sanskrit words but of two cosmic principles: Śiva (Īśā, the pervading consciousness) and Śakti (āvāsya, the pervading power that makes dwelling possible). Their merger into one long <em>ā</em>-sound enacts the Śiva-Śakti union (yāmala) at the phonemic level. The instruction <em>tena tyaktena bhuñjīthāḥ</em> maps precisely onto the Tantric siddha's mode of engagement: full sensory participation in the world without attachment — not renunciation of the world but renunciation of the separating ego-sense within worldly engagement. This is the basis of the left-handed Tantric path where enjoyment (<em>bhoga</em>) and liberation (<em>mokṣa</em>) are held simultaneously.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- immersive essay -->
+      <div class="nava-essay">
+        <div class="nava-essay-eyebrow">Immersive Exploration · Mantra 1</div>
+        <h4>The Architecture of Pervasion</h4>
+        <p>There is a particular quality of attention that arises when you stand in a forest at dusk and suddenly stop distinguishing between the trees and the light moving through them. For a moment — perhaps one breath, perhaps less — the usual sense of being a separate observer positioned in front of a world of objects dissolves into something else: a field of luminous presence in which trees, light, and the one looking are all somehow one event. The Īśāvāsya's first mantra is not describing that experience. It is describing the reality that makes that experience possible, and it is insisting — through the grammatical force of a gerundive — that perceiving this way is not a mystical privilege but an obligation of right perception.</p>
+        <p><span class="hl">Īśā vāsyam</span> — "by the Ruler-Permeader, to-be-pervaded." Two words. Ten syllables. The entire Upaniṣad. Śaṅkara, who rarely overstates, says explicitly that the first mantra alone contains the complete purport of the text. He does not say this is the most important mantra, or the most beautiful — he says the entire teaching is already present. Everything that follows is elaboration for different grades of readiness, different modes of inquiry, different life-situations. But the teaching itself — the whole of it — is here, in the claim that the world is to be perceived as pervaded by the pervasive-ruling consciousness.</p>
+        <p>The Sanskrit gerundive (<em>kṛtya</em>) is a grammatical form with no clean English equivalent. <em>Vāsyam</em> means something between "ought to be," "is meant to be," and "is functionally constituted as" pervaded. It is not a mere should — it carries the weight of dharmic obligation. Śaṅkara spends the majority of his commentary on this single word, noting that it makes Advaita Vedānta not a passive philosophical conclusion but an active practice of perception. The seeker's dharma — their deep structural duty — is to continuously re-orient perception toward pervasion. Not to argue oneself into it, not to imagine it, but to actually see.</p>
+        <h4>The Figura Etymologica and Neural Imprinting</h4>
+        <p>The phrase <span class="dev-inline">जगत्यां जगत्</span> (<em>jagatyāṃ jagat</em> — the moving within the moving) is a figure of speech that linguists call a figura etymologica: the same root used simultaneously as locative and subject. The jagat that is moving is located within the jagatyāṃ — the moving-ground. Motion within motion. Process within process. The structural recursion is not accidental: the ṛṣi who shaped this mantra was building a phrase that would lodge permanently in the practitioner's procedural memory. The doubled phoneme <em>ja</em> (a voiced palatal stop, firing at approximately 1500 Hz) activates Broca's area's phoneme-recognition loop twice in rapid succession. Neurolinguists describe this as an "earworm" mechanism — the phrase becomes embedded not in semantic memory (the fragile kind, easily forgotten) but in the motor-speech system's procedural loop. The mantra will not simply be remembered. It will be re-enactable at any moment, automatically, because it has been encoded at the level of motor programming. This is why the Vedic tradition insists on chanting rather than reading: the teaching must enter the body, not just the mind.</p>
+        <h4>Renunciation as Ontological Re-Orientation</h4>
+        <p><em>Tena tyaktena bhuñjīthāḥ</em> — "through that renounced, enjoy." The English word renunciation almost always carries a flavor of deprivation: giving something up, forgoing a pleasure, accepting less. The Sanskrit <em>tyāga</em> (from √tyaj: to abandon, to let fall away) carries none of this flavor. What falls away is not the world but the false relationship with it — the relationship of extraction, the sense that the world is an other from which one takes. When the world is perceived as Brahman's own body, as the Absolute's mode of appearing, there is nothing to take from it, because the one who would take is also that same appearing. The enjoyment that follows this recognition is not diminished; it is clarified. You eat as Brahman eating Brahman. You see as awareness seeing its own light. <span class="hl">Mā gṛdhaḥ kasya svid dhanam</span> — "do not covet anyone's wealth" — is not a moral prohibition. It is a description of what naturally follows when the pervasion-perception is established: there is no one else's wealth to covet, because there is no other.</p>
+        <p>This is what Śaṅkara means when he says the first mantra contains the entire Upaniṣad. The metaphysics of pervasion, the ethics of non-extraction, the practice of right perception, and the goal of freedom from coveting desire are all present in two verses. What the remaining seventeen mantras provide are the angles, elaborations, paradoxes, practices, and dying-protocols that allow different kinds of human beings — at different stages of their lives, with different capacities and different afflictions — to find their particular door into this one room. But the room is here. The first mantra is the room.</p>
+      </div>
+    </div>
+    <!-- END NAVA 1 -->
+
+
+    <!-- ══════════════════════ NAVA 2 — MANTRA 2 ══════════════════════ -->
+    <div class="nava-entry">
+      <div class="nava-num-row">
+        <div class="nava-num-badge">II</div>
+        <div>
+          <div class="nava-num-label">Nava Sūtra · Second Essential Mantra</div>
+          <div class="nava-num-dev">द्वितीयो मन्त्रः — जिजीविषेत्</div>
+        </div>
+      </div>
+      <div class="nava-card">
+        <div class="nava-card-dev">कुर्वन् एव इह कर्माणि जिजीविषेच्छतँ समाः ।<br>एवं त्वयि न अन्यथा इतः अस्ति न कर्म लिप्यते नरे ।।</div>
+        <div class="nava-card-iast">Kurvan eva iha karmāṇi jijīviṣet śataṃ samāḥ | evaṃ tvayi nānyatheto'sti na karma lipyate nare ||</div>
+        <div class="nava-card-trans">Performing actions here, one should wish to live a hundred years. Thus for you there is no other way than this — action does not cling to the person who lives thus.</div>
+        <div class="nava-word-grid">
+          <div class="nava-word-item"><div class="nava-word-label">Jijīviṣet</div><div class="nava-word-val"><span class="nava-word-dev">जिजीविषेत्</span> — Desiderative optative of √jīv: "one who desires to live (should act)." The desire for life is not suppressed but channeled.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Kurvan eva</div><div class="nava-word-val"><span class="nava-word-dev">कुर्वन् एव</span> — "Performing indeed/only while acting." eva is emphatic: action is not supplementary but central to the path described here.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Lipyate</div><div class="nava-word-val"><span class="nava-word-dev">लिप्यते</span> — Passive of √lip: "is smeared onto / clings." Action does not adhere to the one who acts without ego-attribution.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Adhikāra</div><div class="nava-word-val">Śaṅkara: this mantra addresses the karma-yoga sādhaka, not the jñāna-niṣṭha. The full hundred-year life as the context for action-as-practice.</div></div>
+        </div>
+      </div>
+      <div class="lens-accordion">
+        <div class="lens-accordion-title">Five Analytical Lenses</div>
+        <div class="lens-tab-bar" id="lens-tabs-2">
+          <div class="lens-tab active" onclick="showLens(2,'vedic',this)">Vedic · Āgamic</div>
+          <div class="lens-tab" onclick="showLens(2,'phil',this)">Philosophical</div>
+          <div class="lens-tab" onclick="showLens(2,'sci',this)">Scientific</div>
+          <div class="lens-tab" onclick="showLens(2,'neuro',this)">Neuropsychological</div>
+          <div class="lens-tab" onclick="showLens(2,'tantric',this)">Tantric · Kuṇḍalinī</div>
+        </div>
+        <div class="lens-panels">
+          <div class="lens-panel active" id="lens-2-vedic"><div class="lens-panel-head">Vedic · Āgamic</div><div class="lens-panel-body">The Vedic <em>āśrama</em> system (four life-stages) placed karma-kāṇḍa (ritual action) as the primary duty of the <em>gṛhastha</em> (householder). Mantra 2 addresses this entire life-stage: the householder who cannot renounce the world and take up direct inquiry is given a complete path — not as consolation but as genuine route. The Āgamic parallel is the <em>kālikrama</em> tradition of Kashmir Śaivism, in which every action — eating, walking, speaking — is offered into the fire of consciousness as a continuous internal sacrifice. The fire of awareness (<em>cit-agni</em>) is the recipient of all action; the actor is the priest; the action is the oblation. This transforms the entire life into a Vedic yajña without a single external ritual act. Mantra 2 is the Upaniṣadic seed of this Āgamic doctrine: action performed with full presence, without ego-appropriation of results, is already the complete sacrifice.</div></div>
+          <div class="lens-panel" id="lens-2-phil"><div class="lens-panel-head">Philosophical</div><div class="lens-panel-body">Mantra 2 presents what philosophers would call a <strong>compatibilist</strong> position on action and freedom. The Sāṃkhya school held that karma and mokṣa are incompatible — action binds, and liberation requires cessation of action. The Mīmāṃsaka held the opposite: ritual action (karma) is itself the highest good. Mantra 2 cuts through both: action <em>per se</em> does not bind. What binds is the ego's appropriation of action as "mine." The technical term for this appropriation is <em>ahaṅkāra</em>-attribution, and the mechanism by which action avoids leaving residue (<em>na karma lipyate</em>) is precisely the absence of ahaṅkāra-attribution. This is the philosophical foundation of the Bhagavad Gītā's karma-yoga doctrine, which Śaṅkara regards as elaborating what Mantra 2 states in seed form. The desiderative verb <em>jijīviṣet</em> is philosophically precise: it acknowledges the will-to-live as a given, not something to be suppressed, and makes that very will the fuel for practice. Desire for life is not the problem; desire for life without right action is.</div></div>
+          <div class="lens-panel" id="lens-2-sci"><div class="lens-panel-body"><div class="lens-panel-head">Scientific</div>The "hundred years" (<em>śataṃ samāḥ</em>) is not hyperbole — it is an intended lifespan. The Āyurvedic tradition measures a full human life at 100 years (four 25-year āśramas), and modern science confirms that the human genome is calibrated for approximately this maximum natural lifespan under optimal conditions. The instruction to wish for 100 years while performing action reflects a fundamental insight that research into purpose-driven longevity now confirms: the Blue Zone studies (Buettner, 2004–present) consistently show that populations with the highest longevity share precisely the combination described in Mantra 2 — purposeful daily activity (kurvan eva), embedded in a framework larger than individual self-interest (the pervasion of Mantra 1), and freedom from the kind of stress that accompanies acquisitive ego-driven action. The mechanism of <em>na karma lipyate</em> (action not clinging) corresponds to the difference between eustress (purposeful engagement) and distress (ego-driven striving): the former extends healthy lifespan; the latter accelerates cellular aging through cortisol dysregulation and telomere shortening.</div></div>
+          <div class="lens-panel" id="lens-2-neuro"><div class="lens-panel-body"><div class="lens-panel-head">Neuropsychological</div>The phrase <em>na karma lipyate nare</em> (action does not cling to the person) describes with precision what modern trauma psychology distinguishes as the difference between trauma-forming action and action that leaves no lasting negative trace. When an action is performed with full present-moment awareness, without self-referential ownership ("I am doing this"), the right hemisphere's inferior frontal gyrus — which processes ownership attribution and self-referential tagging of memories — does not activate the same consolidation pathway. The action occurs; it is registered; it does not become a self-defining narrative. Trauma, by contrast, occurs when an event is both overwhelming AND self-referentially tagged: "this happened TO ME, and it defines ME." The mantra describes the neurological state of ego-free action: events happen through the person without being appropriated as self-constituting. Modern MBSR (Mindfulness-Based Stress Reduction) protocols essentially operationalize this: observation of action without self-referential commentary reduces the persistence of stress-response traces — exactly what <em>na karma lipyate</em> describes.</div></div>
+          <div class="lens-panel" id="lens-2-tantric"><div class="lens-panel-body"><div class="lens-panel-head">Tantric · Kuṇḍalinī</div>In the Tantric framework of the three śaktis — icchā (will), jñāna (knowledge), and kriyā (action) — Mantra 2 addresses the <em>kriyā-śakti</em> dimension of practice. The Tantric teaching is that kriyā-śakti, fully activated and fully surrendered (as instrument of Śakti rather than of individual will), is itself a form of liberation. The <em>kuṇḍalinī</em> in the Tantric body-map is not a passive energy to be roused — it is the concentrated form of all three śaktis. When action (kriyā) is performed as Śakti's own movement through the body — with the practitioner as transparent vehicle — the result described in Mantra 2 is the physiological reality: the prāṇic energy released in action flows upward through the suṣumnā rather than dissipating laterally into the nāḍīs of desire and result-seeking. The kuṇḍalinī teaching on karma-yoga is that correct action, offered completely, charges the central channel. This is why the Tantric path does not require renunciation of action — it requires its transformation from personal doing into divine expression.</div></div>
+        </div>
+      </div>
+      <div class="nava-essay">
+        <div class="nava-essay-eyebrow">Immersive Exploration · Mantra 2</div>
+        <h4>The Desiderative as Spiritual Technology</h4>
+        <p>The most extraordinary word in Mantra 2 is not the one that appears most important. It is not <em>karmāṇi</em> (actions) nor <em>śataṃ samāḥ</em> (hundred years). It is the strange grammatical form <em>jijīviṣet</em> — the desiderative of <em>jīv</em> (to live). The desiderative tense in Sanskrit creates an entirely new verb from an existing root by expressing the desire for the root's own action. <em>Jijīviṣet</em> means, precisely, "one who desires to live." The mantra does not say "live for a hundred years" — it says "with the desire to live a hundred years, perform actions." The desire itself is named, held, and then made the fuel for right action. This is the opposite of the ascetic tradition's approach, which treats the desire for life as the enemy. Here it is the engine.</p>
+        <h4>The Physics of Non-Clinging</h4>
+        <p>Sanskrit has a word for the residue that actions leave behind — <span class="dev-inline">संस्कार</span> (saṃskāra). A saṃskāra is a mental groove, a habitual tendency, a neural pathway worn deep by repeated experience and emotional tagging. Most actions leave saṃskāras because they are performed with ego-attribution: "I did this; I succeeded; I failed; this happened to me." The attribution creates the groove. The groove creates the tendency. The tendency creates the character. The character creates the destiny. The Upaniṣad's claim — <em>na karma lipyate nare</em> — is that action performed without ego-attribution creates no saṃskāra. Not because the action did not happen, but because no one appropriated it.</p>
+        <p>The verb <em>lipyate</em> (from √lip: to smear, to anoint, to adhere) is a passive form — action "is not smeared onto" the person. The image is precise: imagine writing on water. The pen moves; the water parts; the pen passes; the water closes behind it without a mark. This is the quality of action that Mantra 2 prescribes — complete engagement without trace. The trace is not the action; it is the ownership of the action. Remove the ownership, and action flows through a person like writing through water.</p>
+        <h4>The Hundred-Year Mandate</h4>
+        <p>Why a hundred years? The Vedic system measured the complete human life at four 25-year stages: the student (<em>brahmacarya</em>), the householder (<em>gṛhastha</em>), the forest-dweller (<em>vānaprastha</em>), and the renunciant (<em>sannyāsa</em>). A complete life required all four. The mantra's instruction to wish for a hundred years while performing actions is not an aspiration to mere longevity — it is an insistence that the entire arc of human life is the appropriate context for karma-yoga. This is not a fast path. It is a whole-life path. The hundred years is the time needed for action, repeated correctly, to wear away the ego-attribution groove so deeply that non-clinging becomes natural, spontaneous, and effortless. You do not become free from karma in a weekend retreat. You become free through a lifetime of action performed with increasing purity of motive, offered completely, without possession of the result. <span class="hl">Kurvan eva</span> — only while doing, continuously doing — is the entire method.</p>
+        <p>Śaṅkara draws a boundary here that his commentarial tradition has always maintained: this mantra is addressed to those who cannot directly take up the path of knowledge. Not because they are lesser, but because they are not yet at the stage where the first mantra's insight can be directly received. The pervasion-vision of Mantra 1 requires a degree of inner stillness and discriminative capacity that not all seekers possess at every stage of their lives. For those in the midst of the world's full engagement — raising children, managing responsibilities, building something, caring for the ill — Mantra 2 is not a consolation prize. It is the complete path, different only in its starting conditions. Both paths end in the same recognition. The karma-yogin arrives through the purification of action; the jñānin arrives through the directness of insight. The destination is identical.</p>
+      </div>
+    </div>
+    <!-- END NAVA 2 -->
+
+
+    <!-- ══════════════════════ NAVA 3 — MANTRA 4 ══════════════════════ -->
+    <div class="nava-entry">
+      <div class="nava-num-row">
+        <div class="nava-num-badge">III</div>
+        <div>
+          <div class="nava-num-label">Nava Sūtra · Third Essential Mantra</div>
+          <div class="nava-num-dev">चतुर्थो मन्त्रः — मनसो जवीयः</div>
+        </div>
+      </div>
+      <div class="nava-card">
+        <div class="nava-card-dev">अनेजत् एकम् मनसो जवीयो नैनद्देवा आप्नुवन् पूर्वमर्षत् ।<br>तद् धावतो अन्यान् अत्येति तिष्ठत् तस्मिन् अपो मातरिश्वा दधाति ।।</div>
+        <div class="nava-card-iast">Anejat ekam manaso javīyo nainad devā āpnuvan pūrvam arṣat | tad dhāvato anyān atyeti tiṣṭhat tasmin apo mātariśvā dadhāti ||</div>
+        <div class="nava-card-trans">Unmoving, One, faster than the mind — the gods could not reach it, for it moved ahead first. Standing still, it surpasses those who run. Within it, Mātariśvan apportions all activities.</div>
+        <div class="nava-word-grid">
+          <div class="nava-word-item"><div class="nava-word-label">Anejat</div><div class="nava-word-val"><span class="nava-word-dev">अनेजत्</span> — an + √ej (archaic Vedic: to tremble/quiver). "Non-trembling." The most ancient root in the mantra — found only in Śukla YV and Atharvaveda.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Javīyaḥ</div><div class="nava-word-val"><span class="nava-word-dev">जवीयः</span> — Comparative of java (speed, √ju: to hasten) + visarga. "More speedy than." Mind is the fastest known; awareness exceeds it.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Arṣat</div><div class="nava-word-val"><span class="nava-word-dev">अर्षत्</span> — √arṣ (Vedic, rare: to flow, stream) — imperfect tense. One of only 4 occurrences in all Vedic literature. Marks extreme antiquity.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Tiṣṭhat</div><div class="nava-word-val"><span class="nava-word-dev">तिष्ठत्</span> — Present participle of √sthā: "while standing still." The standing-still that surpasses all movement — spacetime as reference frame.</div></div>
+        </div>
+      </div>
+      <div class="lens-accordion">
+        <div class="lens-accordion-title">Five Analytical Lenses</div>
+        <div class="lens-tab-bar" id="lens-tabs-3">
+          <div class="lens-tab active" onclick="showLens(3,'vedic',this)">Vedic · Āgamic</div>
+          <div class="lens-tab" onclick="showLens(3,'phil',this)">Philosophical</div>
+          <div class="lens-tab" onclick="showLens(3,'sci',this)">Scientific</div>
+          <div class="lens-tab" onclick="showLens(3,'neuro',this)">Neuropsychological</div>
+          <div class="lens-tab" onclick="showLens(3,'tantric',this)">Tantric · Kuṇḍalinī</div>
+        </div>
+        <div class="lens-panels">
+          <div class="lens-panel active" id="lens-3-vedic"><div class="lens-panel-head">Vedic · Āgamic</div><div class="lens-panel-body">In the Vedic cosmology, the "gods" (<em>devāḥ</em>) who could not reach Brahman correspond to the five <em>jñānendriyas</em> (senses of knowledge: sight, hearing, smell, taste, touch) and the five <em>karmendriyas</em> (senses of action). The Kena Upaniṣad makes this explicit: "That which is not thought by the mind, but by which the mind thinks — know that alone as Brahman." Mantra 4's <em>na enat devā āpnuvan</em> says the same: the sense-faculties (devāḥ = the shining ones, the sense-powers) cannot reach the Ātman because they are its instruments, not its object. In the Āgamic tradition of Krama Śaivism, this mantra describes the nature of <em>mahāprakāśa</em> — the great luminosity that is not itself visible but makes all visibility possible. Mātariśvan distributing activities "within it" corresponds to the Āgamic teaching that the world's entire dynamism (<em>vimarśa</em>) arises within and upon the ground of pure self-luminous consciousness (<em>prakāśa</em>) without disturbing it.</div></div>
+          <div class="lens-panel" id="lens-3-phil"><div class="lens-panel-head">Philosophical</div><div class="lens-panel-body">Mantra 4 encodes three distinct philosophical paradoxes that each point to a different property of pure consciousness. <strong>First paradox</strong> — unmoving yet faster than mind: this resolves through the category distinction between object and ground. Mind moves through consciousness as an event through a field. The field does not move with the event; it is the condition of the event's movement. Consciousness is not faster than mind in the sense of a race — it is prior to mind in the sense of a precondition. <strong>Second paradox</strong> — the gods cannot reach it yet it flows ahead: the Ātman cannot be an object of perception because it is the subject of all perception. Every attempt by the sense-faculties to "reach" awareness results in awareness receding further — not because it withdraws, but because you cannot step outside the thing you are looking from. <strong>Third paradox</strong> — standing still yet surpassing all who run: the reference-frame reversal. All motion occurs within the motionless witness-ground. The witness does not move through time; time moves through the witness. These three paradoxes are not poetic ornaments; they are precise philosophical instruments for dissolving the mind's habitual categories of motion/stillness, near/far, and inside/outside.</div></div>
+          <div class="lens-panel" id="lens-3-sci"><div class="lens-panel-head">Scientific</div><div class="lens-panel-body">The claim that something is "faster than the mind" finds its most precise scientific parallel in Benjamin Libet's 1983 experiments on the timing of conscious will. Libet measured the "readiness potential" (Bereitschaftspotential) — a negative shift in brain electrical activity that begins 550 milliseconds before a subject consciously decides to move a finger. The conscious decision to act comes after the brain has already begun preparing the act. This means that awareness is not produced by neural processing — it is already present before the processing that generates the "decision" arrives at consciousness. Something is faster than the mind's own decision-making: it has already moved when the mind catches up. This is precisely <em>manaso javīyaḥ</em>. Furthermore, Mantra 4's <em>devā na āpnuvan</em> (senses cannot reach it) encodes the "hard problem of consciousness" formulated by David Chalmers in 1995: no amount of describing neural correlates (the "gods" — the sense-powered processing systems) explains the subjective quality of experience. The explanation recedes because the explainer is already within the thing being explained.</div></div>
+          <div class="lens-panel" id="lens-3-neuro"><div class="lens-panel-head">Neuropsychological</div><div class="lens-panel-body">Mantra 4's sequence of paradoxes has a measurable neurological effect when contemplated as a meditation object. Each paradox activates the anterior cingulate cortex (ACC) — the brain's cognitive conflict-monitoring region. The ACC signals when two competing representations are simultaneously held: moving/unmoving, faster-than-mind/not-reachable, standing-still/surpassing-runners. When the ACC fires repeatedly in rapid sequence (as the three paradox-pairs are presented), the resulting theta oscillations (4–8 Hz) measurably increase — a signature of deep meditative absorption. EEG studies on practitioners of koan meditation (the Zen equivalent of these Vedic paradox-pairs) show exactly this pattern: ACC cascade → theta burst → sustained theta → subjective experience of "no-thought" gap. The mantra is functioning as a neurological induction protocol. The practitioner is not being asked to solve the paradoxes; they are being asked to hold them until the ACC exhausts its conflict-resolution attempts and simply stops — and the stopping is the point.</div></div>
+          <div class="lens-panel" id="lens-3-tantric"><div class="lens-panel-head">Tantric · Kuṇḍalinī</div><div class="lens-panel-body">In the Tantric body-map, the property <em>anejat</em> (non-trembling) corresponds precisely to the state of consciousness associated with the <em>sahasrāra-cakra</em> — the thousand-petaled crown center. The lower cakras are characterized by movement, vibration, and transformation (√ej = to tremble/quiver describes cakra activation). The sahasrāra is the center of pure witness-consciousness — immovable, non-trembling, the ground of all cakra activity. <em>Mātariśvan distributing activities within it</em> corresponds to the Tantric teaching that once kuṇḍalinī has reached the sahasrāra and the practitioner is established in pure awareness (<em>turīya</em> state), the entire world of activity — the prāṇic distribution through the nāḍī network — continues perfectly, spontaneously, without the ego's interference. The "standing-still that surpasses all movement" is the siddha's permanent sahasrāra-establishment: the body-mind complex acts flawlessly, distributed by Mātariśvan (prāṇa), while the witness remains eternally unmoved.</div></div>
+        </div>
+      </div>
+      <div class="nava-essay">
+        <div class="nava-essay-eyebrow">Immersive Exploration · Mantra 4</div>
+        <h4>The Problem of a Mirror Trying to See Itself</h4>
+        <p>There is a classic puzzle: can a mirror see itself? It can, of course, be positioned facing another mirror — and in that infinite regress of reflections, each image contains the previous one, shrinking toward a vanishing point that never actually vanishes. The answer is no: the mirror that is doing the reflecting is never present in what is reflected, because it has always already moved to the position of the reflector. Mantra 4 describes this same structural impossibility at the level of consciousness. The "gods" (sense-faculties, the processing systems) cannot reach consciousness because consciousness is always already ahead of any processing that tries to capture it. It is not evasive — it is structurally prior. The eye can see everything except the seeing itself.</p>
+        <h4>Anejat — The Sound of the Unmoved</h4>
+        <p>The opening word <em>anejat</em> is the oldest in the entire Upaniṣad. The root √ej — to tremble, to quiver — exists in only four Vedic texts and did not survive into Classical Sanskrit. The ṛṣi who used this archaic root was making a precise choice: √ej specifically denotes the trembling of instability, the quivering of something that can be disturbed. <em>An-ejat</em> is not merely "motionless" — it is "utterly beyond the category of disturbability." A stone is motionless; an earthquake will move it. The Ātman described here is not a stone. It is the ground in which the earthquake occurs, which is itself not moved by what moves within it. This is the metaphysical specificity that the archaic root provides — and it took a ṛṣi with complete phonological and philosophical mastery to recognize that this near-extinct root was the exact word needed.</p>
+        <h4>Standing Still and Surpassing All Runners</h4>
+        <p>The fourth paradox — <span class="dev-inline">तिष्ठत् ... अत्येति</span> (<em>tiṣṭhat ... atyeti</em>: standing still, it surpasses) — is perhaps the most deceptively simple statement in the entire text. It resolves entirely once the frame-of-reference reversal is seen: the ones who are running are running within the one that is standing still. The racetrack does not run alongside the runners; it is the ground on which they run. To say the racetrack "surpasses all runners" is not paradoxical — it contains all runners without itself participating in any race. Consciousness is the racetrack. Mind, perception, thought, time, and space are all runners on it. None of them can leave it, exceed it, or understand it from the outside — because there is no outside.</p>
+        <p>This is why the Upaniṣad says the gods (<em>devāḥ</em>) could not reach it even though it "flowed ahead" (<em>pūrvam arṣat</em>). The flowing ahead is not motion in space — it is the structural priority of awareness over all its contents. Every time a sense faculty "reaches" toward awareness as an object, awareness has already receded to the position of the subject doing the reaching. You cannot step outside your own seeing. <span class="hl">Tad dhāvato anyān atyeti tiṣṭhat</span> — while standing completely still, it surpasses all those who run — is the Upaniṣad's most economical description of the subject-object asymmetry that makes consciousness the most fundamental and least graspable reality in existence. It is not difficult to find. It is impossible to not be. The difficulty is only that we keep looking for it rather than looking from it.</p>
+      </div>
+    </div>
+    <!-- END NAVA 3 -->
+
+
+    <!-- ══════════════════════ NAVA 4 — MANTRA 5 ══════════════════════ -->
+    <div class="nava-entry">
+      <div class="nava-num-row">
+        <div class="nava-num-badge">IV</div>
+        <div>
+          <div class="nava-num-label">Nava Sūtra · Fourth Essential Mantra</div>
+          <div class="nava-num-dev">पञ्चमो मन्त्रः — षट् विरोधाभास</div>
+        </div>
+      </div>
+      <div class="nava-card">
+        <div class="nava-card-dev">तत् एजति तत् न एजति तत् दूरे तद् उ अन्तिके ।<br>तद् अन्तः अस्य सर्वस्य तद् उ सर्वस्य अस्य बाह्यतः ।।</div>
+        <div class="nava-card-iast">Tat ejati tat na ejati tat dūre tad u antike | tad antaḥ asya sarvasya tad u sarvasya asya bāhyataḥ ||</div>
+        <div class="nava-card-trans">It moves; it moves not. It is far; it is near. It is within all this; it is without all this.</div>
+        <div class="nava-word-grid">
+          <div class="nava-word-item"><div class="nava-word-label">Tat (×8)</div><div class="nava-word-val"><span class="nava-word-dev">तत्</span> — "That." Repeated 8 times — referential persistence training. The pointer never changes; the descriptions change around it.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Dūre / Antike</div><div class="nava-word-val"><span class="nava-word-dev">दूरे / अन्तिके</span> — ū (low, back, far) vs i (high, front, near). Phonosemantic iconicity: the vowels enact the spatial polarity in the body.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Antaḥ / Bāhyataḥ</div><div class="nava-word-val"><span class="nava-word-dev">अन्तः / बाह्यतः</span> — Inside / outside. The topological paradox: Brahman has no boundary, so inside and outside are positions within it.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Structure</div><div class="nava-word-val">Three paradox-pairs in exact parallel structure — three ACC-cascade activations → theta-wave induction → cognitive halt. The pause IS the teaching.</div></div>
+        </div>
+      </div>
+      <div class="lens-accordion">
+        <div class="lens-accordion-title">Five Analytical Lenses</div>
+        <div class="lens-tab-bar" id="lens-tabs-4">
+          <div class="lens-tab active" onclick="showLens(4,'vedic',this)">Vedic · Āgamic</div>
+          <div class="lens-tab" onclick="showLens(4,'phil',this)">Philosophical</div>
+          <div class="lens-tab" onclick="showLens(4,'sci',this)">Scientific</div>
+          <div class="lens-tab" onclick="showLens(4,'neuro',this)">Neuropsychological</div>
+          <div class="lens-tab" onclick="showLens(4,'tantric',this)">Tantric · Kuṇḍalinī</div>
+        </div>
+        <div class="lens-panels">
+          <div class="lens-panel active" id="lens-4-vedic"><div class="lens-panel-head">Vedic · Āgamic</div><div class="lens-panel-body">The paradox structure of Mantra 5 has direct Vedic precedents in the Ṛgvedic cosmological hymns — particularly the Nāsadīya Sūkta (10.129) which uses the same technique of paired negations to approach the uncreated ground of creation. The Āgamic tradition, particularly Kashmir Śaivism's Vijñānabhairava Tantra (verse 49), explicitly uses <em>antike</em> (nearby) as a dhāraṇā — a meditation object for the contemplation of the inner sky (<em>antarākāśa</em>). Abhinavagupta in his Tantrāloka comments that the six paradoxes of Mantra 5 correspond to the six-fold self-recognition of Śiva: Śiva knows himself as moving (through Śakti) and unmoving (as Śiva); as far (as the object of perception) and near (as the subject); as interior (as the witness) and exterior (as the world). The mantra is not describing Brahman from outside — it is Brahman describing its own self-knowledge.</div></div>
+          <div class="lens-panel" id="lens-4-phil"><div class="lens-panel-head">Philosophical</div><div class="lens-panel-body">Mantra 5 achieves something no argument can: it <strong>enacts</strong> the non-dual recognition rather than describing it. By presenting three irresolvable contradictions — motion/stillness, near/far, inside/outside — in rapid succession without resolution, it forces the philosophical mind to a halt. This halt is not failure; it is the method. In the Madhyamaka Buddhist tradition, Nāgārjuna uses the same technique (prasaṅga — reduction to absurdity through double contradiction) to dissolve the mind's tendency to reify. The Upaniṣad's version is more direct: no multi-step argument, just the three pairs. The mind that cannot resolve "it is far AND it is near" simultaneously is a mind operating within its own categorical framework. The dissolution of that framework — not its replacement by a new framework — is what the mantra aims for. Wittgenstein's comment that "the limits of my language are the limits of my world" is the Western parallel: the three paradoxes push language to its limits, and what lies beyond those limits is the subject of the Upaniṣad.</div></div>
+          <div class="lens-panel" id="lens-4-sci"><div class="lens-panel-head">Scientific</div><div class="lens-panel-body">Quantum mechanics provides a structural parallel to each of the three paradox pairs. <strong>Moving/not-moving:</strong> wave-particle duality — an electron is simultaneously a wave (moving, distributed) and a particle (located, still) depending on how it is measured. The measurement frame, not the electron, determines which aspect appears. <strong>Far/near:</strong> quantum entanglement — two entangled particles behave as if simultaneously "here" and "there" regardless of spatial separation. Einstein called this "spooky action at a distance," but the entanglement data require that the categories of near and far do not apply at the quantum level. <strong>Inside/outside:</strong> the holographic principle in string theory and black hole physics — all information on a three-dimensional surface can be encoded on its two-dimensional boundary. The "inside" and "outside" distinction breaks down when information is distributed holographically. These are not equivalences between quantum mechanics and Vedanta. They are structural resonances: both fields arrive at the inadequacy of classical either-or categories when describing the fundamental nature of reality.</div></div>
+          <div class="lens-panel" id="lens-4-neuro"><div class="lens-panel-head">Neuropsychological</div><div class="lens-panel-body">The word <em>tat</em> (that) appears eight times in Mantra 5 — once in each half-phrase, with the predicate changing each time. This is a masterclass in what cognitive neuroscience calls <strong>referential persistence training</strong>. When a pointer-word (a word with no intrinsic semantic content — only relational content like "that," "it," "this") is repeated eight times with changing predicates, the brain's language network learns to maintain a stable reference-point while releasing attachment to any particular description of that reference-point. After eight repetitions, the mind's anchor settles on the pointing itself rather than what is being pointed at — which is exactly the goal. This is the neural mechanism of what meditation teachers call "resting in the space between thoughts": the pointer (awareness itself) remains constant while descriptions arise and dissolve. The mantra trains this through pure repetition of the pointer. The eightfold repetition of <em>tat</em> is not rhetorical — it is a calibrated neural protocol for stabilizing the witness-position.</div></div>
+          <div class="lens-panel" id="lens-4-tantric"><div class="lens-panel-head">Tantric · Kuṇḍalinī</div><div class="lens-panel-body">In the Śrīcakra (Śrī Yantra) geometry, the relationship between <em>antaḥ</em> (inner) and <em>bāhyataḥ</em> (outer) maps precisely onto the yantra's structure: the bindu (central point) is the innermost and simultaneously the source of the entire outer geometric structure. From the bindu, the triangles expand outward; yet every outer layer is a projection of the bindu's own nature. There is no "outside" of the bindu — the outer is the inner extended. This is the Śrīvidyā understanding of Mantra 5's third paradox. The phonosemantic polarity of <em>dūre</em> (ū-kāra: deep, back, low resonance ~300 Hz) and <em>antike</em> (i-kāra: high, front, bright resonance ~2200 Hz) maps precisely onto the Tantric teaching of the two poles of consciousness: <em>ū</em> as the muladhara resonance (ground, root, the far-away-yet-most-intimate base of the spine) and <em>i</em> as the ājñā resonance (the near, bright, immediately present frontal center). The Upaniṣad and the Tantric cakra system share one sonic map.</div></div>
+        </div>
+      </div>
+      <div class="nava-essay">
+        <div class="nava-essay-eyebrow">Immersive Exploration · Mantra 5</div>
+        <h4>Three Collisions</h4>
+        <p>Imagine three doors in a hallway. The first door has two signs: "OPEN" and "CLOSED." The second: "NEARBY" and "FAR AWAY." The third: "INSIDE" and "OUTSIDE." You are told that all six signs are simultaneously correct descriptions of what lies beyond each door. Your task is to open the doors. This is Mantra 5. The paradoxes are not riddles with solutions. They are designed to exhaust the part of the mind that looks for solutions — and the exhaustion is the door opening.</p>
+        <p>The word <span class="dev-inline">तत्</span> (tat — that) appears eight times in twenty syllables. This repetition is not poetic emphasis. It is a precision technology for what cognitive science calls referential persistence. When a pure pointer-word (with no intrinsic meaning, only pointing-function) is repeated eight times while its predicates change — moving, not-moving; far, near; inner, outer — the mind's attention stops trying to define what is being pointed to and simply rests at the pointing itself. After eight repetitions the pointer has stabilized into pure directionality. The word tat is no longer a word; it is a gesture toward something that language cannot reach by any direct route.</p>
+        <h4>The Acoustic Paradox of Dūre and Antike</h4>
+        <p>One of the most precise phonosemantic constructions in Sanskrit poetry occurs in this mantra: <span class="dev-inline">दूरे तद् उ अन्तिके</span> — far, and also near. The word <em>dūre</em> is built around the long <em>ū</em> vowel (approximately 300 Hz in the acoustic spectrum) — the deepest, most recessed sound in Sanskrit, produced with the lips rounded and the tongue pulled far back in the throat. When you say <em>dūre</em>, you physically enact farness in your mouth: the sound goes back, goes deep, goes away from you. The word <em>antike</em> (near, from <em>anti</em>: in the face of) is built around the high front <em>i</em> vowel (approximately 2200 Hz) — bright, forward, immediately present. When you say <em>antike</em>, the sound comes forward, comes toward the front of your face, arrives. The mantra produces the spatial polarity it is describing in the bodies of those who chant it. Far and near are not just concepts here; they are bodily events that arise and dissolve within the same breath.</p>
+        <h4>What Happens in the Pause</h4>
+        <p>There is a specific instruction, rarely stated but always implied in the tradition of mantra contemplation: after chanting or reading Mantra 5, do not immediately proceed to Mantra 6. Pause. The duration of the pause is unspecified because it cannot be specified — it is the duration of whatever the mind needs to exhaust its attempts to resolve what it has just encountered. For some practitioners, this pause lasts thirty seconds. For others, thirty minutes. For a few, the pause has lasted their entire remaining life. <span class="hl">Tad antaḥ asya sarvasya tad u sarvasya asya bāhyataḥ</span> — it is within all this, and it is also outside all this. When the mind genuinely cannot move — when the inside/outside axis has been dissolved, when far and near have been shown to be provisional, when moving and unmoving have been revealed as frame-dependent — what remains is what the mantra has been pointing to all along. Not a philosophical position. Not a meditative state. Not a description. The thing itself, which was never absent, now merely unobstructed. The pause is the teaching.</p>
+      </div>
+    </div>
+    <!-- END NAVA 4 -->
+
+
+    <!-- ══════════════════════ NAVA 5 — MANTRAS 6–7 ══════════════════════ -->
+    <div class="nava-entry">
+      <div class="nava-num-row">
+        <div class="nava-num-badge">V</div>
+        <div>
+          <div class="nava-num-label">Nava Sūtra · Fifth Essential Mantra</div>
+          <div class="nava-num-dev">षष्ठ-सप्तमौ — एकत्व-दर्शन</div>
+        </div>
+      </div>
+      <div class="nava-card">
+        <div class="nava-card-dev">यः तु सर्वाणि भूतानि आत्मनि एव अनुपश्यति ।<br>सर्वभूतेषु च आत्मानं ततो न विजुगुप्सते ।।<br>यस्मिन् सर्वाणि भूतानि आत्मा एव अभूत् विजानतः ।<br>तत्र को मोहः कः शोक एकत्वम् अनुपश्यतः ।।</div>
+        <div class="nava-card-iast">Yaḥ tu sarvāṇi bhūtāni ātmani eva anupaśyati | sarvabhūteṣu ca ātmānaṃ tato na vijugupsate || yasmin sarvāṇi bhūtāni ātmā eva abhūt vijānataḥ | tatra ko mohaḥ kaḥ śoka ekatvam anupaśyataḥ ||</div>
+        <div class="nava-card-trans">He who sees all beings in the Self alone, and the Self in all beings, does not shrink from anything. When to the knower all beings have become the Self itself — what delusion, what grief, for one who perceives oneness?</div>
+        <div class="nava-word-grid">
+          <div class="nava-word-item"><div class="nava-word-label">Anupaśyati</div><div class="nava-word-val"><span class="nava-word-dev">अनुपश्यति</span> — anu (continuously, in conformity) + √paś (to see). Not a glance but a sustained meditative perception aligned with reality.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Vijugupsate</div><div class="nava-word-val"><span class="nava-word-dev">न विजुगुप्सते</span> — Desiderative of √gup: "does not desire to protect by avoidance." Revulsion and disgust dissolve when the other is recognized as self.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Moha / Śoka</div><div class="nava-word-val"><span class="nava-word-dev">मोह / शोक</span> — Delusion (wrong knowing) / Grief (wrong relating). The two roots of all suffering — both dissolved by ekatva-vision.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Ekatvam</div><div class="nava-word-val"><span class="nava-word-dev">एकत्वम्</span> — eka + tva suffix (abstract -ness): "one-ness" as lived experience, not logical deduction. Perceived, not concluded.</div></div>
+        </div>
+      </div>
+      <div class="lens-accordion">
+        <div class="lens-accordion-title">Five Analytical Lenses</div>
+        <div class="lens-tab-bar" id="lens-tabs-5">
+          <div class="lens-tab active" onclick="showLens(5,'vedic',this)">Vedic · Āgamic</div>
+          <div class="lens-tab" onclick="showLens(5,'phil',this)">Philosophical</div>
+          <div class="lens-tab" onclick="showLens(5,'sci',this)">Scientific</div>
+          <div class="lens-tab" onclick="showLens(5,'neuro',this)">Neuropsychological</div>
+          <div class="lens-tab" onclick="showLens(5,'tantric',this)">Tantric · Kuṇḍalinī</div>
+        </div>
+        <div class="lens-panels">
+          <div class="lens-panel active" id="lens-5-vedic"><div class="lens-panel-head">Vedic · Āgamic</div><div class="lens-panel-body">Mantras 6–7 represent the culmination of the Upaniṣad's first movement in terms of Vedic soteriology. The Vedic ideal of the <em>brahmin</em> (one who knows Brahman) is not intellectual knowledge of scriptures but exactly this perceptual realization: seeing all beings as one's own Ātman. The Yājñavalkya-Maitreyī dialogue in Bṛhadāraṇyaka 2.4 reaches the identical conclusion: the husband, wife, children, wealth, and gods are not loved for themselves but for the Ātman within them. When the Ātman alone is known as the ground of all love, there is nothing left to grieve. In the Āgamic Krama tradition, the practice of <em>anupaśyati</em> (continuously seeing the Self in all) is formalized as the <em>krama-pūjā</em> — a worship in which every person encountered is recognized as the Goddess in a different form. The practitioner's gaze becomes the gaze of Bhairava (<em>bhairavī-dṛṣṭi</em>) — the perceiving that sees only Śakti everywhere. Mantra 6–7 is the Vedic root of this Āgamic flowering.</div></div>
+          <div class="lens-panel" id="lens-5-phil"><div class="lens-panel-head">Philosophical</div><div class="lens-panel-body">The two-verse structure of Mantras 6–7 encodes a profound logical progression. Mantra 6 describes the practice: seeing all beings in the Self AND the Self in all beings. Note the bidirectionality — not only "everything is in Brahman" (which could still leave the practitioner as a separate perceiver of a Brahman-saturated world) but also "the Self is in everything." Both directions are necessary to complete the recognition. Mantra 7 delivers the consequence: when this recognition is complete, moha (cognitive confusion — requiring an "other" about whom to be confused) and śoka (grief — requiring a separation from someone loved) become structurally impossible. Grief is the pain of separation; when separation is recognized as a cognitive error, grief loses its object. Delusion is the misperception of the other as fundamentally different; when the other is recognized as Ātman, delusion dissolves. The two-verse structure is not redundant — Mantra 6 gives the practice, Mantra 7 gives the result, and the result is stated as rhetorical questions (<em>ko mohaḥ, kaḥ śoka</em> — "what delusion? what grief?") because Śaṅkara reads them as Mahāvākya-level utterances: not "there will be no grief" but "grief is already impossible for the knower."</div></div>
+          <div class="lens-panel" id="lens-5-sci"><div class="lens-panel-head">Scientific</div><div class="lens-panel-body">The evolutionary origin of the ekatva-vision described in Mantras 6–7 can be traced through comparative psychology and developmental biology. The expansion of self-boundary — from individual organism to kin group to tribe to species to all sentient beings — follows a recognizable trajectory in both evolutionary theory and developmental psychology. <em>Kin selection</em> (Hamilton, 1964) establishes that evolutionary fitness can be increased by benefiting genetic relatives — the genetic "self" is distributed. <em>Reciprocal altruism</em> (Trivers, 1971) extends this to non-kin who will reciprocate — the effective "self" expands further. Contemplative traditions, particularly those building on the insights of these mantras, systematically extend this boundary further still — to all beings, through the recognition of a shared substrate of awareness. Psychological research on advanced meditators (Lutz, Davidson, et al., 2008) shows measurable reduction in the right temporoparietal junction's self-other categorization activity during loving-kindness practice — the biological self-boundary literally becomes less defined. The Upaniṣad describes the logical endpoint of this gradient: when the boundary collapses entirely, <em>na vijugupsate</em> (no more avoidance) is the natural result.</div></div>
+          <div class="lens-panel" id="lens-5-neuro"><div class="lens-panel-head">Neuropsychological</div><div class="lens-panel-body">The mirror neuron system (MNS), discovered by Rizzolatti et al. (1992, 1996), provides the neurological substrate for the ekatvam practice. Mirror neurons fire identically whether a subject performs an action or observes another performing the same action — they are the "I am you" circuits of the brain. In ordinary social cognition, the MNS is bounded by the right temporoparietal junction's (rTPJ) maintenance of self-other distinction. The practice of <em>anupaśyati</em> (continuously perceiving the Self in all beings) is, at the neurological level, a systematic expansion of the MNS boundary combined with a progressive softening of rTPJ's self-other barrier. Studies on long-term meditators (Davidson et al., 2004) show significantly reduced rTPJ activity during compassion meditation — the self-other boundary is measurably less defined. The result — <em>na vijugupsate</em> (no more revulsion/avoidance) — corresponds precisely to what happens when the amygdala's threat-categorization of "non-self" faces is disarmed: strangers are no longer processed as potential threats. This is not mysticism; it is the neurological description of compassion as a measurable brain state.</div></div>
+          <div class="lens-panel" id="lens-5-tantric"><div class="lens-panel-head">Tantric · Kuṇḍalinī</div><div class="lens-panel-body">In the Śrīvidyā tradition, the practice of Mantras 6–7 corresponds to the <em>navāvaraṇa-pūjā</em>'s culminating insight: at the innermost circle (bindu), the distinction between the worshipper, the worshipped, and the act of worship dissolves into a single luminous recognition. The nine enclosures of the Śrī Yantra are progressively more interior — and as the meditator moves inward through each āvaraṇa, the "other-ness" of the deity being worshipped progressively decreases until at the bindu, the worshipper recognizes themselves as the very Lalitā they have been approaching. This is the Tantric enactment of <em>sarvabhūteṣu ca ātmānam</em> (the Self in all beings): the beings (the deities of the nine enclosures) are seen as the Self's own expressions. The result — <em>ko mohaḥ kaḥ śoka</em> (what delusion, what grief) — is the state described in the Lalitā Sahasranāma as <em>nityatṛptā</em> (eternally satisfied) and <em>bhaktanidhi</em> (treasure of devotees): a state beyond the alternation of seeking and finding because what was sought was always already present as the seeker.</div></div>
+        </div>
+      </div>
+      <div class="nava-essay">
+        <div class="nava-essay-eyebrow">Immersive Exploration · Mantras 6–7</div>
+        <h4>The Practice of Looking Without a Boundary</h4>
+        <p>There is an exercise in some contemplative traditions where you sit in a public space — a café, a station, a park — and you look at the faces passing by with a specific quality of attention. Not the ordinary social attention that categorizes (known/unknown, safe/threatening, attractive/plain) but a pure looking that asks, for each face: what is it in this person that is the same as the looking in me? Not their biography, not their appearance, not their emotional state — but the bare fact of their being aware, the naked awareness-that-is-there behind their eyes. This is, in broad outline, the practice described by <em>anupaśyati</em> (continuously perceiving the Self in all beings). The word is not poetic. It is a method.</p>
+        <h4>Two Directions, One Recognition</h4>
+        <p>Mantra 6 contains a logical structure of unusual precision. "He who sees all beings in the Self" — this is the first direction: the world's multiplicity held within the unity of awareness. But this alone is not the full vision. The addendum is essential: "and the Self in all beings" (<em>sarvabhūteṣu ca ātmānam</em>). Why both directions? Because the first alone could still be a private achievement — a meditator who has unified their inner world while remaining separate from the outer one. The second direction closes this gap: not only is everything within the Self, but the Self is within everything. The meditator's awareness and the awareness behind the eyes of every being they encounter are the same awareness — not similar, not parallel, but numerically identical, the way a hundred reflections in a hundred mirrors are all reflections of one light source.</p>
+        <p>The consequence — <em>tato na vijugupsate</em> (therefore does not shrink/recoil) — is stated with grammatical restraint. The desiderative <em>vijugupsate</em> (from √gup: the desire to protect oneself by avoidance) is the precise technical term for the emotional mechanism of revulsion, disgust, and social avoidance. These responses exist evolutionarily to protect the organism from threats. When the boundary between self and other dissolves, the threat-categorization that triggers revulsion has no object. You cannot be revolted by your own hand. You cannot have disgust for the water in which you are swimming. Vijugupsā (avoidance-desire) is structurally predicated on otherness; when otherness is seen through, vijugupsā dissolves not because you forced yourself to accept the unacceptable, but because the architecture that made it unacceptable is simply gone.</p>
+        <h4>What Grief Requires</h4>
+        <p>Mantra 7's question — <span class="dev-inline">कः शोक</span> (kaḥ śoka — what grief?) — is the Upaniṣad's most direct declaration about suffering. Grief requires separation. You grieve the loss of what was present and is now absent, the death of what was alive, the departure of what was near. The entire logic of grief is built on the axiom that the other was genuinely, fundamentally other — and therefore truly lost. <span class="hl">Ekatvam anupaśyataḥ</span> — for one who perceives oneness — this axiom is revealed as false. Not comfortingly false, not wishfully false, but structurally false in the same way that the axiom "the sun moves around the earth" is false: a perceptual error corrected by a shift in the reference frame. When the frame shifts — when all beings are seen as the Self — there is no loss because there is no other to lose. The beloved has not ceased to exist; the beloved was never as separate as grief required them to be. This is not consolation. It is ontology. And the Upaniṣad delivers it not as an argument to be accepted but as a question: <em>ko mohaḥ kaḥ śoka</em> — for the one who sees oneness, tell me: where exactly is the grief?</p>
+      </div>
+    </div>
+    <!-- END NAVA 5 -->
+
+
+    <!-- ══════════════════════ NAVA 6 — MANTRA 8 ══════════════════════ -->
+    <div class="nava-entry">
+      <div class="nava-num-row">
+        <div class="nava-num-badge">VI</div>
+        <div>
+          <div class="nava-num-label">Nava Sūtra · Sixth Essential Mantra</div>
+          <div class="nava-num-dev">अष्टमो मन्त्रः — ब्रह्मणो अष्ट-धर्माः</div>
+        </div>
+      </div>
+      <div class="nava-card">
+        <div class="nava-card-dev">स पर्यगात् शुक्रम् अकायम् अव्रणम् अस्नाविरम् शुद्धम् अपापविद्धम् ।<br>कविः मनीषी परिभूः स्वयम्भूः याथातथ्यतोऽर्थान् व्यदधात् शाश्वतीभ्यः समाभ्यः ।।</div>
+        <div class="nava-card-iast">Sa paryagāt śukram akāyam avraṇam asnāviram śuddham apāpaviddham | kaviḥ manīṣī paribhūḥ svayambhūḥ yāthātathyato'rthān vyadadhāt śāśvatībhyaḥ samābhyaḥ ||</div>
+        <div class="nava-card-trans">That Self is all-pervading, radiant, bodiless, unwounded, without sinews, pure, untouched by evil — the omniscient seer, mind-ruler, transcendent, self-existent — it has apportioned all things in proper order from eternal years.</div>
+        <div class="nava-word-grid">
+          <div class="nava-word-item"><div class="nava-word-label">Eight Negations</div><div class="nava-word-val">a-kāyam · a-vraṇam · a-snāviram · śuddham · a-pāpaviddham · paryagāt · śukram — progressive stripping of all attributes that could limit or define.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Apāpaviddham</div><div class="nava-word-val"><span class="nava-word-dev">अपापविद्धम्</span> — Negative bahuvrīhi: "not pierced by evil." Not claiming moral purity positively — only that the Ātman cannot be injured. The witness of a thought is unstained by the thought's content.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Yāthātathyataḥ</div><div class="nava-word-val"><span class="nava-word-dev">याथातथ्यतः</span> — Unique avyayībhāva compound: yathā + tathā + ya + tas. "According to exact truth-correspondence." Found in no other principal Upaniṣad.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Svayambhūḥ</div><div class="nava-word-val"><span class="nava-word-dev">स्वयम्भूः</span> — Bahuvrīhi: "self-existent." Brahman's being is self-caused — not created, not dependent. The only genuinely independent entity.</div></div>
+        </div>
+      </div>
+      <div class="lens-accordion">
+        <div class="lens-accordion-title">Five Analytical Lenses</div>
+        <div class="lens-tab-bar" id="lens-tabs-6">
+          <div class="lens-tab active" onclick="showLens(6,'vedic',this)">Vedic · Āgamic</div>
+          <div class="lens-tab" onclick="showLens(6,'phil',this)">Philosophical</div>
+          <div class="lens-tab" onclick="showLens(6,'sci',this)">Scientific</div>
+          <div class="lens-tab" onclick="showLens(6,'neuro',this)">Neuropsychological</div>
+          <div class="lens-tab" onclick="showLens(6,'tantric',this)">Tantric · Kuṇḍalinī</div>
+        </div>
+        <div class="lens-panels">
+          <div class="lens-panel active" id="lens-6-vedic"><div class="lens-panel-head">Vedic · Āgamic</div><div class="lens-panel-body">Mantra 8 is the Īśāvāsya's <em>nirguṇa-brahma-prakaraṇa</em> — the section on Brahman without qualities. In the Vedic tradition, the highest description of the Absolute was precisely this: not what it is, but what it is not. The Taittirīya Upaniṣad's <em>yato vāco nivartante aprāpya manasā saha</em> (from where speech turns back, unable to reach, along with mind) says the same thing in positive register: there is a limit where all positive description fails. Mantra 8 operates within that limit by using negative compounds exclusively for the first seven attributes. In the Āgamic Kaula tradition, the practice of repeatedly meditating on these eight negatives (a-kāyam — not body; a-vraṇam — not wound; a-snāviram — not sinew) serves as a progressive <em>vairāgya-sādhana</em>: each negation peels away one more layer of identification with the sheath-system (<em>kośas</em>), until what remains after all seven negations cannot be located anywhere and cannot be negated — because it is the very negater. The positive affirmations (<em>kaviḥ, manīṣī, paribhūḥ, svayambhūḥ</em>) then point to the positive qualities of this what-remains — not as a compensation for the negations but as their natural corollary.</div></div>
+          <div class="lens-panel" id="lens-6-phil"><div class="lens-panel-head">Philosophical</div><div class="lens-panel-body">Mantra 8 is the Vedic precursor of the via negativa — the negative-theology tradition that Western philosophy would not develop explicitly until Pseudo-Dionysius the Areopagite (5th c. CE) and Meister Eckhart (13th c. CE). The method: since Brahman is the ground of all categories, it cannot be positively defined within any category. To say "Brahman is conscious" places Brahman within the category of consciousness — which implies it could in principle also be unconscious, that consciousness is a property it happens to have. The correct statement is: Brahman is not un-conscious — i.e., the absence of consciousness is impossible for Brahman. The double-negation (not-un-) is the only honest form available. Śaṅkara's commentary on each <em>a-kāra</em> prefix (a-kāyam, a-vraṇam, etc.) insists: "This negation does not mean Brahman is the opposite of what is negated — it means Brahman transcends the entire axis along which the negated property and its opposite are both defined." Not bodiless-as-opposed-to-bodied. Transcendent to the body/no-body axis entirely. This is the grammatical precision of Advaita negative theology: each negation removes a false axis, not merely a false attribute.</div></div>
+          <div class="lens-panel" id="lens-6-sci"><div class="lens-panel-head">Scientific</div><div class="lens-panel-body">The unique compound <em>yāthātathyataḥ</em> — "according to exact truth-correspondence" — is the Vedic definition of what philosophers call <em>aletheia</em> (truth as correspondence, from Aristotle: "to say of what is that it is, and of what is not that it is not, is true"). The mantra says Brahman apportioned things <em>yāthātathyataḥ</em> — in exact conformity with what things truly are. This is the Vedic statement of what physics calls the unreasonable effectiveness of mathematics in describing nature (Wigner, 1960): the laws of physics are not arbitrary conventions but correspond with extraordinary precision to the deep structure of reality. The reason this correspondence exists — why mathematics works at all — is the question Wigner called "unreasonable." The mantra's answer is: because the fundamental ordering intelligence (<em>svayambhūḥ</em> — self-existent awareness) apportioned things in exact accordance with truth from the beginning. The correspondence between mind and reality that makes science possible is not an accident; it is the signature of the <em>kaviḥ</em> (omniscient seer) who distributed things <em>yāthātathyataḥ</em>.</div></div>
+          <div class="lens-panel" id="lens-6-neuro"><div class="lens-panel-head">Neuropsychological</div><div class="lens-panel-body">The seven negative attributes of Mantra 8 have a measurable neuropsychological effect when used as sequential meditation objects in the neti-neti style. Each negation represents the release of an identification: a-kāyam (not body) — the practitioner's identification with bodily sensation is released; a-vraṇam (not wound) — identification with somatic trauma is released; a-snāviram (not sinew) — identification with organic fragility is released; śuddham (pure) — the meta-identification with purity-seeking is subtly released even as purity is affirmed; a-pāpaviddham (not pierced by evil) — identification with moral self-judgment is released. Each release corresponds neurologically to a reduction in the default-mode network's self-referential processing load. The progressive DMN deactivation that results from seven sequential releases produces what practitioners describe as a "lightness" — the cognitive burden of maintaining a self-construct decreases. The four positive attributes that follow (<em>kaviḥ, manīṣī, paribhūḥ, svayambhūḥ</em>) then fill the cleared space not with a new self-construct but with qualities of awareness itself — the witness that remains after all the negations is not empty; it is luminous, all-knowing, transcendent, and self-sustaining.</div></div>
+          <div class="lens-panel" id="lens-6-tantric"><div class="lens-panel-head">Tantric · Kuṇḍalinī</div><div class="lens-panel-body">In the Tantric kuṇḍalinī model, the seven negative attributes of Mantra 8 map directly onto the seven cakras from root to crown — each negation dissolving the limited identity associated with that cakra level. <em>A-kāyam</em> (not body) — mūlādhāra identity with physical form dissolved. <em>A-vraṇam</em> (not wound) — svādhiṣṭhāna identity with emotional wounding dissolved. <em>A-snāviram</em> (not sinew) — maṇipūra identity with vital-force assertion dissolved. <em>Śuddham</em> (pure) — anāhata identity with relational purity/impurity dissolved. <em>A-pāpaviddham</em> (not pierced by evil) — viśuddha identity with verbal/moral self-narrative dissolved. The two positive attributes <em>kaviḥ</em> (omniscient seer) and <em>manīṣī</em> (mind-ruler) correspond to ājñā activation. <em>Paribhūḥ</em> (transcendent) and <em>svayambhūḥ</em> (self-existent) correspond to sahasrāra establishment. The mantra is thus a complete kuṇḍalinī-ascent map: each attribute releases the identity-knot of one cakra, ascending from mūlādhāra to sahasrāra, until the self-existent awareness at the crown is recognized as having always been the ground of all cakra-activity.</div></div>
+        </div>
+      </div>
+      <div class="nava-essay">
+        <div class="nava-essay-eyebrow">Immersive Exploration · Mantra 8</div>
+        <h4>The Method of Subtraction</h4>
+        <p>There is a sculptural principle attributed to Michelangelo: the statue is already in the marble; you remove the excess. Mantra 8 applies this principle to consciousness itself. The Ātman is already present — it has never been absent. What conceals it is not the absence of something good but the presence of misidentification: the belief that the body is the self, that wounds define the self, that moral history constitutes the self. Each negative attribute of the mantra is a sculptor's stroke: removing one more layer of false identification until what remains cannot be further removed, because it is the removing itself.</p>
+        <h4>Seven Subtractions</h4>
+        <p>The seven negative attributes arrive in a sequence that is not arbitrary. <em>A-kāyam</em> (not body) is first because body-identification is the most immediate and most obvious. <em>A-vraṇam</em> (not wound) is second because once body-identity is weakened, the next strongest identification is often with somatic or psychological wounding — "I am someone who has been hurt." <em>A-snāviram</em> (without sinews) dissolves identification with the connective tissue of habit and organic drive. <em>Śuddham</em> (pure) seems positive but is actually the most subtle negation: it removes the identification with impurity while avoiding the trap of identifying with purity-as-achievement. <em>A-pāpaviddham</em> (not pierced by evil) is last among the negations because moral self-judgment is the deepest layer of the ego-complex. The ego that has released its body, its wounds, its organic drives, and even its purity-seeking will still clutch at moral self-definition — "at least I am someone who tries to be good." This final negation removes even that: the Ātman is not defined by its moral history because it is the witness of all moral events, not their accumulation.</p>
+        <p>After all seven negations, four positive attributes arrive: <span class="dev-inline">कविः मनीषी परिभूः स्वयम्भूः</span> — omniscient seer, mind-ruler, transcendent, self-existent. These are not compensatory additions to soften the negations. They are the natural properties of what remains after the negations have cleared the field. When body-identity, wound-identity, drive-identity, purity-seeking, and moral self-judgment have all been set aside, what is left is simply <em>aware</em>. Not aware of something — just aware. Omniscient because awareness cannot be partial (it is the ground of all perception). Mind-ruling because awareness is prior to mind, not produced by it. Transcendent because it is not located within any system that could contain it. Self-existent because it depends on nothing outside itself for its being. These four qualities are not acquired; they are revealed. The sculptor did not add them to the marble. They were there all along.</p>
+        <p>The final phrase — <span class="dev-inline">याथातथ्यतोऽर्थान् व्यदधात् शाश्वतीभ्यः समाभ्यः</span> — "it has apportioned things in exact correspondence with truth from eternal years" — is the cosmological grounding of everything that came before. The eight attributes are not descriptions of a personal mystic experience. They describe the ground structure of reality itself, which has been ordering things perfectly, in exact truth-correspondence, since before time was measurable. This is not consolation theology. It is the Upaniṣad's most precise claim about the nature of the universe: it is administered, from its depths, by pure self-luminous awareness — and that awareness is identical to what you are when you strip away every false identification the mantra has just removed.</p>
+      </div>
+    </div>
+    <!-- END NAVA 6 -->
+
+
+    <!-- ══════════════════════ NAVA 7 — MANTRA 11 ══════════════════════ -->
+    <div class="nava-entry">
+      <div class="nava-num-row">
+        <div class="nava-num-badge">VII</div>
+        <div>
+          <div class="nava-num-label">Nava Sūtra · Seventh Essential Mantra</div>
+          <div class="nava-num-dev">एकादशो मन्त्रः — उभयम् सह</div>
+        </div>
+      </div>
+      <div class="nava-card">
+        <div class="nava-card-dev">विद्यां च अविद्यां च यः तत् वेद उभयम् सह ।<br>अविद्यया मृत्युं तीर्त्वा विद्यया अमृतम् अश्नुते ।।</div>
+        <div class="nava-card-iast">Vidyāṃ ca avidyāṃ ca yaḥ tat veda ubhayam saha | avidyayā mṛtyuṃ tīrtvā vidyayā amṛtam aśnute ||</div>
+        <div class="nava-card-trans">He who knows both vidyā and avidyā together — crossing over death through avidyā, he attains immortality through vidyā.</div>
+        <div class="nava-word-grid">
+          <div class="nava-word-item"><div class="nava-word-label">Ubhayam saha</div><div class="nava-word-val"><span class="nava-word-dev">उभयम् सह</span> — "Both simultaneously." The double-ca construction insists: not sequential acquisition but simultaneous holding. The grammar IS the teaching.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Tīrtvā</div><div class="nava-word-val"><span class="nava-word-dev">तीर्त्वा</span> — Gerund of √tṝ: "having crossed (a river by wading)." Death must be waded through, not flown over. Engagement, not avoidance.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Vidyā / Avidyā</div><div class="nava-word-val">Here: vidyā = upāsanā (meditation on deities); avidyā = karma-kāṇḍa (ritual action). Neither alone liberates. Both held simultaneously do.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Amṛtam</div><div class="nava-word-val"><span class="nava-word-dev">अमृतम्</span> — a + mṛta (√mṛ: to die): "the deathless." Not physical immortality but the recognition of the Ātman that was never born and cannot die.</div></div>
+        </div>
+      </div>
+      <div class="lens-accordion">
+        <div class="lens-accordion-title">Five Analytical Lenses</div>
+        <div class="lens-tab-bar" id="lens-tabs-7">
+          <div class="lens-tab active" onclick="showLens(7,'vedic',this)">Vedic · Āgamic</div>
+          <div class="lens-tab" onclick="showLens(7,'phil',this)">Philosophical</div>
+          <div class="lens-tab" onclick="showLens(7,'sci',this)">Scientific</div>
+          <div class="lens-tab" onclick="showLens(7,'neuro',this)">Neuropsychological</div>
+          <div class="lens-tab" onclick="showLens(7,'tantric',this)">Tantric · Kuṇḍalinī</div>
+        </div>
+        <div class="lens-panels">
+          <div class="lens-panel active" id="lens-7-vedic"><div class="lens-panel-head">Vedic · Āgamic</div><div class="lens-panel-body">In Śaṅkara's reading, <em>avidyā</em> in Mantras 9–11 does not mean ignorance in the jñāna-kāṇḍa sense. Here it means karma-kāṇḍa — the entire Vedic sacrificial-ritual system. And <em>vidyā</em> here means upāsanā — the meditative worship of deities and cosmic principles. Karma-kāṇḍa alone produces rebirth (you get results proportional to your actions, but results bind you to further cycles). Upāsanā alone produces absorption into the deity's world (Hiraṇyagarbha-loka or higher) — but this is not final liberation; you must eventually return. Only both together — the purification through karma and the elevation through upāsanā — prepares the ground for the direct jñāna of Mantras 1–8. In the Āgamic tradition, this is the <em>kriyā-caryā-yoga-jñāna</em> four-path system: ritual (kriyā), conduct (caryā), yoga (upāsanā), and knowledge (jñāna) — all four are stages of a single ascent, not competing alternatives. Mantra 11 captures the core of this system in twelve syllables: both paths, simultaneously, leading through one to overcome death and through the other to transcend it entirely.</div></div>
+          <div class="lens-panel" id="lens-7-phil"><div class="lens-panel-head">Philosophical</div><div class="lens-panel-body">Mantra 11 is the Upaniṣad's most important statement on the integration of opposites — and its most demanding. The philosophical tradition of non-dualism often struggles with the question of practice: if Brahman is already everything and the Ātman is already free, why practice? Why action? Why ritual? Why meditation? The answer that Mantra 11 encodes is subtle: not "you must practice because you are not yet realized" (which would make practice a means to a future end, contradicting the <em>nityamukta</em> doctrine) but "the movement through practice IS the recognition itself, for the appropriate adhikārin." The river metaphor of <em>tīrtvā</em> (crossing by wading) is not accidental: you do not transcend the river of karma by denying it, hovering above it, or pretending it is not there. You wade through it. The wading IS the crossing. And on the other bank, what you find is not a new state but the recognition of what was always the case — what Mantras 1–8 described.</div></div>
+          <div class="lens-panel" id="lens-7-sci"><div class="lens-panel-head">Scientific</div><div class="lens-panel-body">The simultaneous holding of two apparently contradictory frameworks described by <em>ubhayam saha</em> (both together) finds its most precise scientific parallel in the history of physics itself. The development of quantum mechanics required physicists to simultaneously hold the wave description (vidyā — the unitary, non-local, all-pervading wavefunction) and the particle description (avidyā — the localized, measurable, action-producing interaction) as equally valid and equally incomplete descriptions of the same underlying reality. Bohr's complementarity principle (1927) formalized this: both descriptions are necessary, neither is sufficient, and they cannot be simultaneously fully deployed — yet the complete understanding of quantum phenomena requires holding both. This is structurally identical to Mantra 11's <em>ubhayam saha</em>: both vidyā (the unitary, non-dual perspective) and avidyā (the causal, action-based, sequential perspective) are necessary, neither alone is sufficient, and the complete understanding of human liberation requires holding both simultaneously. The quantum physicist and the Vedic sādhaka are engaged in structurally identical epistemological work.</div></div>
+          <div class="lens-panel" id="lens-7-neuro"><div class="lens-panel-head">Neuropsychological</div><div class="lens-panel-body">The instruction to know both vidyā and avidyā <em>simultaneously</em> (<em>ubhayam saha</em>) maps onto the neuropsychological model of bilateral brain integration. The left hemisphere (sequential, analytical, causal — avidyā's domain) and the right hemisphere (holistic, non-linear, pattern-recognizing — vidyā's domain) are in continuous dynamic interaction through the corpus callosum. Psychological research (McGilchrist, <em>The Master and His Emissary</em>, 2009) suggests that much of modern psychological dysfunction arises from excessive left-hemisphere dominance — the analytical, sequential, action-based mode overwhelming the holistic. Contemplative practice that exclusively favors right-hemisphere holistic absorption (upāsanā alone) without grounding in sequential action-based practice produces spiritual bypassing. Practice that is exclusively left-hemisphere action-based without any holistic contemplative dimension produces the compulsive action-without-rest described as the failed avidyā path. Mantra 11's <em>ubhayam saha</em> is a bilateral integration prescription: both hemispheres, fully engaged, simultaneously — which is the neuropsychological signature of what researchers call "high coherence" states in advanced meditators.</div></div>
+          <div class="lens-panel" id="lens-7-tantric"><div class="lens-panel-head">Tantric · Kuṇḍalinī</div><div class="lens-panel-body">The Tantric resolution of the vidyā-avidyā paradox is expressed in the Kulārṇava Tantra's famous verse: <em>bhoktum iha viṣayān sarvaśaktimān</em> — "he who wishes to enjoy sense-objects here (in this body-world) is the most powerful one." This is the Tantric inversion: the world of sense-objects (avidyā in Mantra 11's terminology) is not to be avoided — it is to be consumed through awareness, offered into the fire of consciousness. This is the <em>bhoga-mokṣa-sāmarasya</em> (unity of enjoyment and liberation) that is the hallmark of the Kaula tradition. The kuṇḍalinī path specifically teaches that the <em>bindu</em> (the concentrated energy of consciousness) must first descend into embodied experience before it can ascend — the downward movement (avidyā, engagement, action, wading through death) is the precondition for the upward movement (vidyā, recognition, liberation, attaining immortality). <em>Avidyayā mṛtyuṃ tīrtvā vidyayā amṛtam aśnute</em>: the kuṇḍalinī must first descend fully into the mūlādhāra (crossing through the death-realm of full embodiment) before it can ascend to the sahasrāra (the amṛtam of crown dissolution). Both movements are necessary; both are sacred.</div></div>
+        </div>
+      </div>
+      <div class="nava-essay">
+        <div class="nava-essay-eyebrow">Immersive Exploration · Mantra 11</div>
+        <h4>The Most Misunderstood Mantra</h4>
+        <p>Mantras 9 and 10 have produced more commentary, more controversy, and more confused students than any other passage in the Upaniṣad. They say: into blind darkness enter those who worship ignorance (avidyā). Into greater darkness still go those devoted to knowledge (vidyā). This appears to say that knowledge is worse than ignorance. It appears to contradict every other Upaniṣad, every line of Śaṅkara's commentary, and the basic logic of the text itself. Generations of commentators, translators, and students have tied themselves in philosophical knots trying to reconcile this with the surrounding text. Śaṅkara cuts through the knot with one move: in this context, the words mean something different.</p>
+        <h4>The Grammar of Simultaneous Holding</h4>
+        <p>Mantra 11's solution to the paradox of Mantras 9–10 is grammatically encoded. The double-ca construction — <span class="dev-inline">विद्यां च अविद्यां च</span> — is not merely an elegant "both X and Y." In Sanskrit grammar, when ca appears twice in this distributive pattern, it carries a technical force: the two terms are to be held simultaneously, not sequentially. Not "first learn vidyā, then learn avidyā" — not even "learn both" as a sequential curriculum — but <em>veda ubhayam saha</em>: know both together, as a single knowing. This is a cognitive state, not a curriculum. It is the state of someone who has genuinely integrated the active-causal-relational dimension of existence (avidyā / karma-kāṇḍa) and the contemplative-unitive-transcendent dimension (vidyā / upāsanā) into a single lived intelligence. Not alternating between them. Holding both simultaneously.</p>
+        <h4>Wading, Not Flying</h4>
+        <p>The gerund <em>tīrtvā</em> (having crossed, from √tṝ — to ford a river, to wade across) is one of the most carefully chosen words in the entire Upaniṣad. It does not use √pat (to fly over), √laṅgh (to leap over), or √tvar (to hurry past). It uses √tṝ — the word for the careful, effortful, water-engaging act of crossing a river on foot. In the metaphorical landscape, avidyā — karma, action, the world of cause and result — is the river. You cannot avoid it by staying on the bank (renunciation without purification). You cannot cross it without getting wet. You must enter, engage, wade. The water is around you, pressing against you, requiring your full attention and strength. And through this fully-engaged wading, you reach the other bank. Not because the wading gave you the vision but because the wading removed the last obstacles to the vision that was always there.</p>
+        <p>What you find on the other bank is <span class="dev-inline">अमृतम्</span> — the deathless. Not a place you have reached. Not a reward you have earned. The recognition of what the Ātman always was: not the body that dies, not the personality that changes, not the biography that accumulates — but the pure awareness that was present in infancy and will be present (without the infant's body) after the body's dissolution. <span class="hl">Avidyayā mṛtyuṃ tīrtvā vidyayā amṛtam aśnute</span>: through the fully-engaged wading of karma-yoga (avidyā, action, the river of cause-and-result), the death that was feared is transcended — not because you have escaped the body but because you have seen through its claim to be the self. And through upāsanā (vidyā, the meditative approach to the transcendent), you arrive at the recognition of the deathless — not as a future state but as the present ground from which the entire wading was always happening. Both together. Simultaneously. This is the one teaching of the Upaniṣad, from yet another angle.</p>
+      </div>
+    </div>
+    <!-- END NAVA 7 -->
+
+
+    <!-- ══════════════════════ NAVA 8 — MANTRAS 15–16 ══════════════════════ -->
+    <div class="nava-entry">
+      <div class="nava-num-row">
+        <div class="nava-num-badge">VIII</div>
+        <div>
+          <div class="nava-num-label">Nava Sūtra · Eighth Essential Mantra</div>
+          <div class="nava-num-dev">पञ्चदश-षोडशौ — हिरण्मय-सोऽहम्</div>
+        </div>
+      </div>
+      <div class="nava-card">
+        <div class="nava-card-dev">हिरण्मयेन पात्रेण सत्यस्य अपिहितं मुखम् ।<br>तत् त्वं पूषन् अपावृणु सत्यधर्माय दृष्टये ।।<br>पूषन् एकर्षे यम सूर्य प्राजापत्य व्यूह रश्मीन् समूह ।<br>तेजो यत् ते रूपं कल्याणतमं तत् ते पश्यामि यः असावसौ पुरुषः सः अहम् अस्मि ।।</div>
+        <div class="nava-card-iast">Hiraṇmayena pātreṇa satyasya apihitaṃ mukham | tat tvaṃ pūṣan apāvṛṇu satyadharmāya dṛṣṭaye || pūṣan ekarṣe yama sūrya prājāpatya vyūha raśmīn samūha | tejo yat te rūpaṃ kalyāṇatamaṃ tat te paśyāmi yaḥ asāv asau puruṣaḥ saḥ aham asmi ||</div>
+        <div class="nava-card-trans">The face of Truth is covered by a golden vessel. O Pūṣan, uncover it — for I, whose dharma is truth, to behold. O sole traveler, Yama, Sun — spread your rays, gather them. That most auspicious form I shall behold. That Puruṣa yonder — I am That.</div>
+        <div class="nava-word-grid">
+          <div class="nava-word-item"><div class="nava-word-label">Hiraṇmaya pātra</div><div class="nava-word-val"><span class="nava-word-dev">हिरण्मयेन पात्रेण</span> — The vijñānamaya kośa: the intellect's own luminosity is so brilliant it veils the Ātman behind it. Light conceals by blinding.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Satyadharma</div><div class="nava-word-val"><span class="nava-word-dev">सत्यधर्माय</span> — Karmadhāraya: "one whose very nature IS truth." The veil lifts for the truth-constituted, not merely the truth-seeking.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">So'ham sandhi</div><div class="nava-word-val"><span class="nava-word-dev">सोऽहम्</span> — saḥ + aham: He + I = So'ham. The breathing mantra of identity. Inhalation: SO. Exhalation: HAM. Every breath has always been saying this.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Grammatical merger</div><div class="nava-word-val">3rd person (asau puruṣaḥ — that Puruṣa) + 1st person (aham asmi — I am). The grammar itself enacts non-dual recognition: the distant and the near become one sentence.</div></div>
+        </div>
+      </div>
+      <div class="lens-accordion">
+        <div class="lens-accordion-title">Five Analytical Lenses</div>
+        <div class="lens-tab-bar" id="lens-tabs-8">
+          <div class="lens-tab active" onclick="showLens(8,'vedic',this)">Vedic · Āgamic</div>
+          <div class="lens-tab" onclick="showLens(8,'phil',this)">Philosophical</div>
+          <div class="lens-tab" onclick="showLens(8,'sci',this)">Scientific</div>
+          <div class="lens-tab" onclick="showLens(8,'neuro',this)">Neuropsychological</div>
+          <div class="lens-tab" onclick="showLens(8,'tantric',this)">Tantric · Kuṇḍalinī</div>
+        </div>
+        <div class="lens-panels">
+          <div class="lens-panel active" id="lens-8-vedic"><div class="lens-panel-head">Vedic · Āgamic</div><div class="lens-panel-body">Mantra 15's golden-vessel prayer is addressed to Pūṣan — the solar deity who is the nourisher, path-finder, and guide of souls at death (Ṛgveda X.17.3). In the Vedic solar theology, the Sun is not merely an astronomical body but the visible form of the cosmic Puruṣa — the macrocosmic Self whose golden disc conceals the Ātman within. Mantra 16's prayer to "spread the rays and gather them" (<em>vyūha raśmīn samūha</em>) is a solar-upāsanā instruction: first fully expanding the Sun's brilliance in meditation (visualizing the entire golden disk), then drawing all its rays back to the central bindu-point within the disk. This gathering is the <em>pratisaṃhāra</em> — the re-absorption of all distributed prāṇa into its source. In the Āgamic tradition, this corresponds to the <em>sāmbhavopāya</em> — the highest of the three Trika approaches — in which the practitioner recognizes the entire cosmic display as the self-expression of Śiva, then recognizes themselves as that Śiva. The Mahāvākya <em>saḥ aham asmi</em> is the Vedic formulation of the Trika's <em>aham evedaṃ viśvam</em> (I indeed am this universe).</div></div>
+          <div class="lens-panel" id="lens-8-phil"><div class="lens-panel-head">Philosophical</div><div class="lens-panel-body">Mantra 16's final declaration — <em>yaḥ asāv asau puruṣaḥ saḥ aham asmi</em> — is the Vedic Mahāvākya. Grammatically, the sentence performs what it states: <em>yaḥ asāv asau puruṣaḥ</em> (that Puruṣa who is yonder) uses the third person and the distant demonstrative <em>asau</em>. <em>Saḥ aham asmi</em> (He, I am) uses the first person. The grammatical persons merge in the act of equating them. This is the philosophical enactment of non-dual recognition: the subject (I) and the object (that) are shown to be grammatically identical through the copula <em>asmi</em>. The sentence cannot be parsed as a description of two things becoming one — it is a single recognition in which the apparent two-ness of the Distant Puruṣa and the I-who-addresses-him is revealed as grammatical illusion. The Sandhified form <em>So'ham</em> (saḥ + aham) takes this further: even the grammatical boundary between "He" and "I" is dissolved by phonetic merger. The avagraha mark between them (So'ham = So + 'ham) is the sign of the thinnest possible boundary — the seam of recognition rather than the wall of separation.</div></div>
+          <div class="lens-panel" id="lens-8-sci"><div class="lens-panel-head">Scientific</div><div class="lens-panel-body">The hiraṇmaya pātra (golden vessel) that covers the face of truth has a precise parallel in what philosophers of mind call the "hard problem of consciousness." The neurosciences have produced extraordinarily detailed and reliable maps of neural correlates of conscious experience — the golden, luminous, architecturally sophisticated understanding of brain function that has accrued over the last century. Yet the "face of truth" — the subjective quality of experience itself, the "what-it-is-like-ness" of being conscious — remains covered. The more brilliant and detailed the neural description becomes, the more effectively it seems to cover over the question of why any of this neural activity should feel like anything at all. This is the hiraṇmaya pātra: the brilliance of the explanatory system is itself the veil. Mantra 15's prayer — "O Pūṣan, uncover it" — is the prayer of every honest consciousness researcher who recognizes that no further accumulation of neural data will dissolve the hard problem. The uncovering comes not from more description but from the shift described in Mantra 16: the recognizer recognizing themselves as the very thing being sought.</div></div>
+          <div class="lens-panel" id="lens-8-neuro"><div class="lens-panel-head">Neuropsychological</div><div class="lens-panel-body">The Soham breath-mantra that derives from Mantra 16 (<em>so</em> on the inhalation, <em>ham</em> on the exhalation — naturally occurring as the sound of breath) has measurable neuropsychological effects distinct from other forms of mantra practice. Because the Soham pairing synchronizes with the respiratory cycle rather than imposing a new rhythm upon it, it engages the interoceptive awareness network (centered in the insula cortex) in a way that purely mental mantra repetition does not. The insula is the seat of what researchers call "pre-reflective self-awareness" — the bodily sense of "I am here, this is me" that underlies all higher-order self-cognition. Soham practice, by aligning the philosophical identity-recognition (<em>saḥ aham asmi</em>) with the breath-cycle's own natural sounds, progressively grounds the philosophical recognition in the body's deepest self-sensing. The recognition "I am That" is not left as an intellectual conclusion — it is breathed, felt, interocepted. This is why the Upaniṣad's highest declaration comes not as a thought but as a breath-sound: the recognition must enter the body to be complete.</div></div>
+          <div class="lens-panel" id="lens-8-tantric"><div class="lens-panel-head">Tantric · Kuṇḍalinī</div><div class="lens-panel-body">In Śrīvidyā sādhana, Mantra 15 points directly to the highest stage of the navāvaraṇa-pūjā: the bindu-stage in which the worshipper, the worshipped, and the worship become one recognition. The hiraṇmaya pātra in Śrīvidyā is specifically identified as the ājñā-cakra's golden luminous disk — the final veil before the sahasrāra. The face of truth (<em>satyasya mukham</em>) is the bindu at the center of the Śrī Yantra — the point that is simultaneously the geometric origin of the entire yantra and the face of Lalitā Mahātripurasundarī looking at you. The prayer <em>apāvṛṇu</em> (uncover) is the śaktipāta moment — the grace-transmission in which the guru's gaze removes the ājñā veil and the sahasrāra opens. Mantra 16's Soham declaration, in the Śrīvidyā context, is the practitioner's recognition at sahasrāra: the solar Puruṣa (Śiva as the universal consciousness) and the individual self (the worshipper who has been approaching through the nine enclosures) are recognized as a single identity. <em>Saḥ aham asmi</em>: That I am — is the linguistic encoding of the bindu-recognition that the Śrī Yantra geometrically encodes in space.</div></div>
+        </div>
+      </div>
+      <div class="nava-essay">
+        <div class="nava-essay-eyebrow">Immersive Exploration · Mantras 15–16</div>
+        <h4>The Veil That Is Made of Light</h4>
+        <p>The most counterintuitive statement in the entire Upaniṣad may be in Mantra 15: the face of truth is covered not by darkness but by a golden vessel. Not ignorance but brilliance. Not stupidity but intelligence. The hiraṇmaya pātra — the intellect-sheath that shines with such extraordinary luminosity — is the final veil precisely because it is so magnificent. Every map of the brain's architecture, every philosophical system's internal coherence, every beautiful theological construction, every moment of profound intellectual understanding — all of these are the golden vessel's gleaming surface. The more brilliant the understanding, the more perfectly it covers what it cannot understand: the face looking through all the understanding.</p>
+        <h4>What the Prayer Does</h4>
+        <p><em>Tat tvaṃ pūṣan apāvṛṇu satyadharmāya dṛṣṭaye</em> — "O Pūṣan, uncover it — for the truth-constituted one, for beholding." Three things in this prayer deserve precise attention. First: the prayer is addressed to the Sun, not to the self. This is the structural acknowledgment that no effort of the intellect can remove the veil the intellect has created. The golden vessel cannot uncover itself. A power from beyond the intellect — the grace of the solar Puruṣa, the guru's transmission, the śaktipāta — is required. Second: the prayer specifies the recipient: <em>satyadharmāya</em> (for the truth-constituted one). The uncovering is not a reward but a recognition: when the seeker has become truth in their very nature, the veil lifts — not from outside but as the natural consequence of the seeker's own becoming. Third: the purpose is <em>dṛṣṭaye</em> — for beholding, not for knowing. The face of truth is not understood; it is seen directly. This is the irreducible distinction between intellectual comprehension and direct recognition that runs through the entire Upaniṣad.</p>
+        <h4>The Sentence That Changes Person</h4>
+        <p>Mantra 16 contains one of the most remarkable sentences in world literature. <span class="dev-inline">यः असावसौ पुरुषः सः अहम् अस्मि</span> — "That Puruṣa who is yonder — I am That." Begin in the third person: <em>yaḥ asāv asau puruṣaḥ</em> — "that Puruṣa who is yonder" (distant demonstrative, third person, the Sun-being addressed in the prayer). End in the first person: <em>saḥ aham asmi</em> — "He, I am." The sentence begins by pointing to something distant and ends by claiming it as the speaker's own identity. This grammatical movement — from "that" (distant, third person) to "I am" (first person, immediate) — is the Mahāvākya enacted as a sentence structure. Not described. Not argued. Performed. The reader who reads this sentence slowly and genuinely cannot avoid having the grammatical persons merge — and the merger IS the recognition. <span class="hl">Saḥ aham asmi</span>: He — I — am. The copula <em>asmi</em> does not add a predicate to a subject. It dissolves the apparent distance between subject and predicate into pure being. So'ham: the sound of breathing — the oldest declaration, prior to all deliberate language, made from the moment of the first breath and until the last.</p>
+      </div>
+    </div>
+    <!-- END NAVA 8 -->
+
+
+    <!-- ══════════════════════ NAVA 9 — MANTRA 17 ══════════════════════ -->
+    <div class="nava-entry">
+      <div class="nava-num-row">
+        <div class="nava-num-badge">IX</div>
+        <div>
+          <div class="nava-num-label">Nava Sūtra · Ninth Essential Mantra</div>
+          <div class="nava-num-dev">सप्तदशो मन्त्रः — क्रतो स्मर</div>
+        </div>
+      </div>
+      <div class="nava-card">
+        <div class="nava-card-dev">वायुः अनिलम् अमृतम् अथ इदम् भस्मान्तम् शरीरम् ।<br>ॐ क्रतो स्मर कृतम् स्मर क्रतो स्मर कृतम् स्मर ।।</div>
+        <div class="nava-card-iast">Vāyur anilam amṛtam atha idaṃ bhasmāntam śarīram | OM krato smara kṛtam smara krato smara kṛtam smara ||</div>
+        <div class="nava-card-trans">The breath shall merge with the immortal air; then this body shall be reduced to ash. OM — O will, remember; remember what was done. O will, remember; remember what was done.</div>
+        <div class="nava-word-grid">
+          <div class="nava-word-item"><div class="nava-word-label">Three dissolutions</div><div class="nava-word-val">vāyuḥ (individual prāṇa) → anilam (cosmic air) → amṛtam (pure consciousness). The complete sequence of dying from personal to universal to deathless.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Kratu</div><div class="nava-word-val"><span class="nava-word-dev">क्रतो</span> — Vocative of kratu (will, purposive intelligence, √kṛ). Self-invocation: the practitioner addresses their own faculty of conscious intention.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Smara (×4)</div><div class="nava-word-val"><span class="nava-word-dev">स्मर</span> — Imperative of √smṛ: "Remember!" Four repetitions engage episodic, semantic, and procedural memory simultaneously. Hippocampal activation intentionally triggered.</div></div>
+          <div class="nava-word-item"><div class="nava-word-label">Bhasmāntam</div><div class="nava-word-val"><span class="nava-word-dev">भस्मान्तम्</span> — Bahuvrīhi: "that whose end is ash." Body defined by its teleology — not pitied but accepted. Ontological acceptance, not fatalism.</div></div>
+        </div>
+      </div>
+      <div class="lens-accordion">
+        <div class="lens-accordion-title">Five Analytical Lenses</div>
+        <div class="lens-tab-bar" id="lens-tabs-9">
+          <div class="lens-tab active" onclick="showLens(9,'vedic',this)">Vedic · Āgamic</div>
+          <div class="lens-tab" onclick="showLens(9,'phil',this)">Philosophical</div>
+          <div class="lens-tab" onclick="showLens(9,'sci',this)">Scientific</div>
+          <div class="lens-tab" onclick="showLens(9,'neuro',this)">Neuropsychological</div>
+          <div class="lens-tab" onclick="showLens(9,'tantric',this)">Tantric · Kuṇḍalinī</div>
+        </div>
+        <div class="lens-panels">
+          <div class="lens-panel active" id="lens-9-vedic"><div class="lens-panel-head">Vedic · Āgamic</div><div class="lens-panel-body">Mantra 17 is the Upaniṣad's <em>maraṇa-vidyā</em> — literally, the science of dying. It is recited at Hindu cremation rites to this day, chanted at the moment of applying fire to the pyre, directing the departing consciousness through the three-stage dissolution. The Vedic tradition has an extensive death-preparation literature — the Bṛhadāraṇyaka's Yājñavalkya dialogues, the Kaṭha Upaniṣad's Naciketas-teaching, the Chāndogya's five-fire doctrine — all of which address the mechanics of dying consciousness and the post-mortem trajectory. Mantra 17 is the most compressed and most directly usable of all these death-instructions: three lines describing the dissolution, four imperatives directing the dying mind. In the Āgamic tradition, this mantra corresponds to the <em>utkrānti-vidyā</em> — the knowledge of conscious exit from the body — that the Śaiva siddha practices throughout life in preparation for the final departure. The kratu (will-faculty) invoked here is the <em>icchā-śakti</em> in its most essential function: the bare capacity for purposive awareness that must remain active through the dissolution of every faculty that usually supports it.</div></div>
+          <div class="lens-panel" id="lens-9-phil"><div class="lens-panel-head">Philosophical</div><div class="lens-panel-body">Mantra 17 contains the Upaniṣad's most precise statement about what persists through death and what does not. The first line establishes the sequence: personal prāṇa (vāyu) → cosmic prāṇa (anila) → pure consciousness (amṛtam) — then the body → ash. The philosophical point is in the sequence: amṛtam (the deathless) appears BEFORE the dissolution of the body. Consciousness does not cease when the body ceases; consciousness is described as already having merged with amṛtam at a stage prior to the body's final ash-becoming. This is not a claim about physical survival. It is the Upaniṣad's version of what Heidegger called <em>Sein-zum-Tode</em> (Being-toward-death) — but with a crucial difference: where Heidegger's authentic Being-toward-death faces mortality as the absolute horizon, the Upaniṣad's <em>amṛtam</em> recognizes death as the dissolution of a bounded form into the boundless ground that was always its substance. The horizon is not death but the recognition of what was always beyond the horizon: the deathless awareness that the dying awareness IS.</div></div>
+          <div class="lens-panel" id="lens-9-sci"><div class="lens-panel-head">Scientific</div><div class="lens-panel-body">The four-fold imperative <em>krato smara kṛtam smara</em> (remember, remember what was done) has a precise neurological parallel in research on terminal lucidity and dying-brain dynamics. Jimo Borjigin et al. (2013, University of Michigan) recorded a surge of highly coherent gamma oscillations (25–100 Hz) in rat brains within 30 seconds of cardiac arrest. Gamma oscillations are associated with the binding of distributed neural information into unified conscious experience — they are the neural signature of integrated awareness. Near-death experience research (van Lommel et al., 2001, Lancet) has documented that a significant percentage of cardiac arrest survivors report heightened clarity, life-review, and the experience of expanded awareness during the period of clinical death. These convergent findings suggest that the dying brain undergoes a final burst of maximally integrated conscious activity. Mantra 17's <em>smara</em> (remember) imperative appears designed to direct this final gamma burst intentionally — to make the terminal neural coherence a conscious act of recollection and identity-recognition rather than a passive physiological event. This is maraṇa-vidyā as applied neuropsychology.</div></div>
+          <div class="lens-panel" id="lens-9-neuro"><div class="lens-panel-head">Neuropsychological</div><div class="lens-panel-body">The two-beat rhythm <em>kra-to / sma-ra</em> in the imperative sequence is calibrated for the dying nervous system with precision. At a slow heartbeat rate (as the heart decelerates in the dying process), 2-syllable units at approximately one second each synchronize with cardiac output, embedding the instruction in the autonomic nervous system's final functional moments. The hippocampus — which consolidates memories — is among the last brain regions to cease function in anoxic death, persisting for several minutes after cardiac arrest. The four repetitions of <em>smara</em> ensure redundant encoding across multiple memory systems: episodic memory (remember what happened), semantic memory (remember what it means), and procedural memory (remember how to be conscious). Four repetitions are not poetry — they are a neural protocol for maximizing the probability that the instruction survives the sequential collapse of cortical function. Furthermore, the self-invocation of <em>kratu</em> (O will — addressing one's own purposive faculty) keeps the prefrontal observer engaged as long as possible, preventing the passive collapse of consciousness into confusion and maintaining the active witness-position through the dissolution.</div></div>
+          <div class="lens-panel" id="lens-9-tantric"><div class="lens-panel-head">Tantric · Kuṇḍalinī</div><div class="lens-panel-body">In the Tantric tradition of śakti-cāla (moving the śakti intentionally), Mantra 17's three-stage dissolution — vāyu (individual prāṇa) → anila (cosmic prāṇa) → amṛtam — describes the kuṇḍalinī's final movement in the dying body. At the moment of death, the kuṇḍalinī śakti reverses its usual downward-dispersing movement and moves upward with tremendous force. The Tantric siddha who has spent a lifetime practicing the intentional upward movement (through prāṇāyāma, dhāraṇā, and samādhi) will have prepared the suṣumnā channel for this final ascent. The <em>kratu smara</em> imperative is the siddha's final act of conscious cooperation with kuṇḍalinī's ascent: "O will, remember — direct the ascending energy consciously, with awareness, through the already-opened central channel to the sahasrāra and beyond." The <em>bhasmāntam śarīram</em> (body whose end is ash) is not a morbid concession but a liberation: the body, recognized as fuel, releases what it has been containing. The ash is the body's final offering into the fire of consciousness. This is the Tantric interpretation of every cremation ground (<em>śmaśāna</em>) as a place of liberation: where the body returns to earth, the consciousness returns to sky.</div></div>
+        </div>
+      </div>
+      <div class="nava-essay">
+        <div class="nava-essay-eyebrow">Immersive Exploration · Mantra 17</div>
+        <h4>What the Mantra Knows That You Do Not</h4>
+        <p>Mantra 17 knows something about the moment of your death that you do not yet know and cannot verify in advance. It knows that the dying consciousness, stripped of its usual anchors — the body's proprioceptive feedback, the stream of sensory information, the coherence of memory and personality — will need something to hold onto. Not something external. Something internal. A practice so thoroughly embedded in the nervous system, so deeply wired into the body's procedural memory, that it persists when everything else is dissolving. The mantra was engineered to be that thing. Its two-beat rhythm, its four-fold repetition, its self-invocation of the will, its sequential dissolution sequence — each of these elements exists for the dying moment, not the reading moment. This is a text that must be practiced for years before it is needed, so that when it is needed it will not need to be remembered. It will simply arise.</p>
+        <h4>The Three-Stage Protocol</h4>
+        <p>The first line of Mantra 17 is a dissolution sequence of three stages, each one larger than the last. <span class="dev-inline">वायुः अनिलम् अमृतम्</span> — breath, then sky, then deathless. <em>Vāyu</em> is the individual breath — your breath, the particular rhythm that has animated this particular body for its entire duration. <em>Anila</em> is the cosmic air — the atmosphere that held your breath as a temporarily individuated portion of itself. <em>Amṛtam</em> is the deathless — the pure awareness that held both the individual breath and the cosmic atmosphere as events within its own unbounded expanse. The sequence is not a narrative of what will happen at death but a map for the dying consciousness to follow: release the individual breath into the cosmic, release the cosmic into the deathless. Each release is both a surrender and a recognition: surrendering the smaller in recognition of the larger that always contained it.</p>
+        <h4>OM — The Silence Before the Instructions</h4>
+        <p>Before the four imperatives, there is one syllable: <span class="dev-inline">ॐ</span>. The Upaniṣad has used <em>OM</em> only here in the entire text — at the moment of death-instruction. This placement is precise. In Vedic grammar, <em>OM</em> is the <em>praṇava</em> — the primordial sound that precedes and grounds all other sound. In the Māṇḍūkya Upaniṣad, OM's three sounds (a-u-m) correspond to the three ordinary states of consciousness (waking, dreaming, deep sleep), and the silence after OM corresponds to Turīya — the fourth state that underlies and pervades all three. The dying consciousness is entering that fourth state. The <em>OM</em> at this moment serves as the boundary marker: everything before it was the world of the three ordinary states; everything after it is the approach to the fourth. The practitioner who has spent years chanting <em>OM</em> — feeling its three sounds dissolve into silence, resting in that silence, then returning to sound — will recognize the moment of death as the long <em>OM</em> they have been practicing. The silence at the end of their life's <em>OM</em> is not an ending. It is the fourth syllable.</p>
+        <p><span class="hl">Krato smara. Kṛtam smara.</span> O will — remember. Remember what was done. In the dying moment, when the body's claim on consciousness is finally releasing, remember: not your failures, not your regrets, not your losses — but the recognition you have been building, mantra by mantra, breath by breath, practice by practice. Remember that the breath that is leaving was always the cosmic breath in temporary individual form. Remember that the body returning to ash was always a temporary coalescence of what is indestructible. Remember that the awareness watching all of this dissolve is the same awareness that watched your first breath — the same awareness that was present in every moment of genuine stillness, in every moment of genuine love, in every moment you saw through the illusion and recognized, even briefly, what was always already the case. Krato smara. Kṛtam smara. The mantra ends in the same place the whole Upaniṣad ends: in the one recognition that all eighteen mantras were pointing toward from the very first syllable. <em>Īśāvāsyam idaṃ sarvam</em>. All of this — including this breath, including this dying — is pervaded by the Absolute. Including this. Especially this.</p>
+      </div>
+    </div>
+    <!-- END NAVA 9 -->
+
+    <!-- closing of Hṛdaya section -->
+    <div style="text-align:center;padding:4rem 0 2rem;">
+      <div style="font-family:'Noto Serif Devanagari',serif;font-size:2.5rem;color:var(--gold);opacity:.7;margin-bottom:1rem;line-height:1;">ॐ</div>
+      <div style="font-family:'Noto Serif Devanagari',serif;font-size:1.3rem;color:var(--gold-light);margin-bottom:.4rem;line-height:1.7;">हृदय-पाठः — समाप्तम्</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(232,216,176,.45);font-size:.95rem;">Hṛdaya-Pāṭha — Complete</div>
+      <div style="width:60px;height:1px;background:rgba(200,149,42,.3);margin:1.5rem auto;"></div>
+      <div style="font-family:'Noto Serif Devanagari',serif;font-size:1.2rem;color:var(--gold);opacity:.65;margin-bottom:.4rem;">ॐ शान्तिः शान्तिः शान्तिः</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(232,216,176,.35);font-size:.85rem;">Peace in body · Peace in world · Peace in consciousness</div>
+    </div>
+
+  </div><!-- /.hridaya-grid -->
+</div><!-- /.hridaya-section -->
+<!-- END ADDITION 2 -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  JAVASCRIPT — paste just before </body>, after the above section   ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+<script>
+// ── Three-chapter split tab system ──
+function showSplit(id, el) {
+  document.querySelectorAll('.split-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.split-tab').forEach(t => t.classList.remove('active'));
+  var panel = document.getElementById('split-' + id);
+  if (panel) panel.classList.add('active');
+  if (el) el.classList.add('active');
+}
+
+// ── Five-lens accordion per nava entry ──
+function showLens(entryNum, lensId, el) {
+  // deactivate all panels and tabs within this entry
+  var tabBar = document.getElementById('lens-tabs-' + entryNum);
+  var panelPrefix = 'lens-' + entryNum + '-';
+  if (tabBar) {
+    tabBar.querySelectorAll('.lens-tab').forEach(t => t.classList.remove('active'));
+  }
+  // find all sibling panels by looking up from the tab
+  var allPanels = el.closest('.nava-entry') ? 
+    el.closest('.nava-entry').querySelectorAll('.lens-panel') : 
+    document.querySelectorAll('#' + panelPrefix + 'vedic, #' + panelPrefix + 'phil, #' + panelPrefix + 'sci, #' + panelPrefix + 'neuro, #' + panelPrefix + 'tantric');
+  allPanels.forEach(p => p.classList.remove('active'));
+  // activate selected
+  var target = document.getElementById(panelPrefix + lensId);
+  if (target) target.classList.add('active');
+  if (el) el.classList.add('active');
+}
+
+// ── Update nav if present to include Hṛdaya link ──
+document.addEventListener('DOMContentLoaded', function() {
+  var nav = document.querySelector('nav');
+  if (nav && !nav.querySelector('[href="#hridaya"]')) {
+    var link = document.createElement('a');
+    link.href = '#hridaya';
+    link.textContent = 'Hṛdaya-Pāṭha';
+    nav.appendChild(link);
+  }
+});
+</script>
    </body>
 </html>
