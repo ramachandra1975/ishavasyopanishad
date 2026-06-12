@@ -1973,35 +1973,7 @@
             <div style="margin-top:2.5rem; font-family:'Noto Sans',sans-serif; font-size:0.7rem; color:rgba(232,216,176,0.22); letter-spacing:0.08em;"> <a href="#top" style="color:rgba(200,149,42,0.45); text-decoration:none; text-transform:uppercase; letter-spacing:0.12em; font-size:0.65rem;">↑ Return to Beginning</a> </div>
          </div>
       </div>
-      <!-- .page-wrap --> 
-      <!--
-════════════════════════════════════════════════════════════════════════════════
-  ISAVASYOPANISHAD — TWO ADDITIONS
-  ─────────────────────────────────
-  ADDITION 1: Three-Chapter Mantra System  →  insert just before Section III
-  ADDITION 2: Hṛdaya-Pāṭha deep-dive section  →  insert just before </body>
-  
-  HOW TO USE:
-  1. Copy everything between "ADDITION 1 START" and "ADDITION 1 END"
-     and paste it BEFORE the line:
-       <!-- ═══ SECTION III: MANTRA 1 ═══ -->
-     (i.e., before <div class="chapter" id="m1">)
-
-  2. Copy everything between "ADDITION 2 START" and "ADDITION 2 END"
-     and paste it JUST BEFORE </body> at the bottom of your file.
-
-  3. Copy the CSS block and paste it into <style> just before the closing </style>
-
-  4. Copy the JS block and paste it just before </body> (after Addition 2).
-════════════════════════════════════════════════════════════════════════════════
--->
-
-
-<!-- ╔══════════════════════════════════════════════════════════════════════╗
-     ║  EXTRA CSS — paste inside <style> before </style>                  ║
-     ╚══════════════════════════════════════════════════════════════════════╝ -->
 <style id="additions-css">
-
 /* ─── THREE-CHAPTER TAB SYSTEM ─── */
 .mantras-chapter-wrap { padding: 5rem 0 0; }
 .mantras-chapter-wrap .ch-eyebrow { font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); font-family:'Noto Sans',sans-serif; margin-bottom:.75rem; }
@@ -2095,16 +2067,9 @@
   .nava-essay { padding-left:1rem; }
 }
 </style>
-
-
-<!-- ╔══════════════════════════════════════════════════════════════════════╗
-     ║  ADDITION 1 — paste BEFORE <div class="chapter" id="m1">           ║
-     ╚══════════════════════════════════════════════════════════════════════╝ -->
-
 <!-- THREE-CHAPTER MANTRA SYSTEM -->
 <div id="mantras" style="position:relative;top:-60px;height:0;overflow:hidden;"></div>
 <div class="page-wrap mantras-chapter-wrap">
-
   <div class="ch-eyebrow">The Eighteen Mantras</div>
   <h1 class="ch-title">Three Chapter Systems</h1>
   <div class="ch-dev">अष्टादश-मन्त्राः — त्रिविध-विभाजन</div>
@@ -2112,14 +2077,12 @@
   <p style="color:var(--text-secondary);line-height:1.9;margin-bottom:2rem;max-width:820px;">
     The eighteen mantras of the Īśāvāsya have been grouped by commentators in three distinct ways — each revealing a different internal logic of the text. All three systems are presented below. Select the division that resonates with your current engagement with the Upaniṣad.
   </p>
-
   <!-- TAB BAR -->
   <div class="split-tab-bar">
     <div class="split-tab active" onclick="showSplit('shankar',this)">Śaṅkara's Divisions</div>
     <div class="split-tab" onclick="showSplit('thirds',this)">Equal Thirds</div>
     <div class="split-tab" onclick="showSplit('thematic',this)">Thematic Arc</div>
   </div>
-
   <!-- ── PANEL 1: Śaṅkara's Divisions 1-8 / 9-14 / 15-18 ── -->
   <div id="split-shankar" class="split-panel active">
     <p class="split-tab-desc">Ādi Śaṅkarācārya's commentarial structure: Jñāna-Kāṇḍa (Knowledge) · Karma-Jñāna synthesis · Maraṇa-Vidyā (Death Practice)</p>
@@ -2185,7 +2148,6 @@
         </div>
       </div>
     </div>
-
     <!-- Chapter II -->
     <div class="mantra-chapter-block">
       <div class="mcb-header">
@@ -2217,7 +2179,6 @@
         </div>
       </div>
     </div>
-
     <!-- Chapter III -->
     <div class="mantra-chapter-block">
       <div class="mcb-header">
@@ -2256,12 +2217,9 @@
       </div>
     </div>
   </div><!-- /split-shankar -->
-
-
   <!-- ── PANEL 2: Equal Thirds 1-6 / 7-12 / 13-18 ── -->
   <div id="split-thirds" class="split-panel">
     <p class="split-tab-desc">Equal thirds of six mantras — three balanced movements: Pervasion · Self-Recognition · Solar Return</p>
-
     <div class="mantra-chapter-block">
       <div class="mcb-header">
         <div class="mcb-num">I</div>
@@ -2307,12 +2265,9 @@
       </div>
     </div>
   </div><!-- /split-thirds -->
-
-
   <!-- ── PANEL 3: Thematic Arc 1-5 / 6-11 / 12-18 ── -->
   <div id="split-thematic" class="split-panel">
     <p class="split-tab-desc">Thematic grouping by philosophical movement: The Absolute · The Relational Self · The Practice of Return</p>
-
     <div class="mantra-chapter-block">
       <div class="mcb-header">
         <div class="mcb-num">I</div>
@@ -2358,12 +2313,6 @@
 
 </div><!-- /.page-wrap.mantras-chapter-wrap -->
 <!-- END ADDITION 1 -->
-
-
-<!-- ╔══════════════════════════════════════════════════════════════════════╗
-     ║  ADDITION 2 — paste just before </body>                            ║
-     ╚══════════════════════════════════════════════════════════════════════╝ -->
-
 <!-- HṚDAYA-PĀṬHA — THE NINE ESSENTIAL MANTRAS -->
 <div id="hridaya" class="hridaya-section">
 
@@ -2380,12 +2329,10 @@
     <div class="hridaya-subtitle">Nine mantras chosen as the complete distillation of the Upaniṣad's teaching — each one an entire philosophy compressed into a single breath, each carrying the full weight of the remaining seventeen</div>
     <div class="hridaya-rule"></div>
   </div>
-
   <div class="hridaya-grid">
     <p class="nava-intro">
       Of the eighteen mantras of the Īśāvāsyopaniṣad, nine have been selected here as the irreducible heart — not because the others are lesser, but because these nine, held together, contain the full arc of the Upaniṣad's teaching: the metaphysical foundation (Mantras 1, 4, 5), the relational-ethical dimension (Mantras 2, 6–7), the negative theology (Mantra 8), the integrative synthesis (Mantra 11), the devotional-solar prayer (Mantra 15), the Mahāvākya (Mantra 16), and the death-science (Mantra 17). A practitioner who meditates deeply on these nine carries the entire Upaniṣad in their body.
     </p>
-
     <!-- ══════════════════════ NAVA 1 — MANTRA 1 ══════════════════════ -->
     <div class="nava-entry">
       <div class="nava-num-row">
@@ -2395,7 +2342,6 @@
           <div class="nava-num-dev">प्रथमो मन्त्रः — ईशावास्यम्</div>
         </div>
       </div>
-
       <!-- compact card -->
       <div class="nava-card">
         <div class="nava-card-dev">ईशा वास्यम् इदं सर्वम् यत्किञ्च जगत्यां जगत् ।<br>तेन त्यक्तेन भुञ्जीथाः मा गृधः कस्य स्विद् धनम् ।।</div>
@@ -2408,7 +2354,6 @@
           <div class="nava-word-item"><div class="nava-word-label">Sandhi</div><div class="nava-word-val">Īśā + āvāsyam → Īśāvāsyam: two ā-sounds merging (savarna-dīrgha). The permeator and pervaded become one long vowel — the teaching in the grammar.</div></div>
         </div>
       </div>
-
       <!-- five lenses -->
       <div class="lens-accordion">
         <div class="lens-accordion-title">Five Analytical Lenses</div>
@@ -2442,7 +2387,6 @@
           </div>
         </div>
       </div>
-
       <!-- immersive essay -->
       <div class="nava-essay">
         <div class="nava-essay-eyebrow">Immersive Exploration · Mantra 1</div>
@@ -2510,8 +2454,6 @@
       </div>
     </div>
     <!-- END NAVA 2 -->
-
-
     <!-- ══════════════════════ NAVA 3 — MANTRA 4 ══════════════════════ -->
     <div class="nava-entry">
       <div class="nava-num-row">
@@ -2561,8 +2503,6 @@
       </div>
     </div>
     <!-- END NAVA 3 -->
-
-
     <!-- ══════════════════════ NAVA 4 — MANTRA 5 ══════════════════════ -->
     <div class="nava-entry">
       <div class="nava-num-row">
@@ -2612,8 +2552,6 @@
       </div>
     </div>
     <!-- END NAVA 4 -->
-
-
     <!-- ══════════════════════ NAVA 5 — MANTRAS 6–7 ══════════════════════ -->
     <div class="nava-entry">
       <div class="nava-num-row">
@@ -2663,8 +2601,6 @@
       </div>
     </div>
     <!-- END NAVA 5 -->
-
-
     <!-- ══════════════════════ NAVA 6 — MANTRA 8 ══════════════════════ -->
     <div class="nava-entry">
       <div class="nava-num-row">
@@ -2713,8 +2649,6 @@
       </div>
     </div>
     <!-- END NAVA 6 -->
-
-
     <!-- ══════════════════════ NAVA 7 — MANTRA 11 ══════════════════════ -->
     <div class="nava-entry">
       <div class="nava-num-row">
@@ -2879,11 +2813,6 @@
   </div><!-- /.hridaya-grid -->
 </div><!-- /.hridaya-section -->
 <!-- END ADDITION 2 -->
-
-
-<!-- ╔══════════════════════════════════════════════════════════════════════╗
-     ║  JAVASCRIPT — paste just before </body>, after the above section   ║
-     ╚══════════════════════════════════════════════════════════════════════╝ -->
 <script>
 // ── Three-chapter split tab system ──
 function showSplit(id, el) {
